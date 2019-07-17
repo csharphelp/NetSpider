@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package Sop.Spider.eventBus;
+
+message Event {
+    string Type = 1;
+    int64 Timestamp = 2;
+    string Data = 3;
+}

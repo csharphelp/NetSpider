@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+      - Dockerfile
+      - DESIGN2.md
+      - runtests.sh
+      - build.sh
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+  - script: sudo apt-get remove mysql-server-5.7
+    displayName: 'UninstallDefaultMysql'
+
+  - task: DockerInstaller@0
+ 
+  - script: sudo docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1qazZAQ! -d mysql
+    displayName: 'DeployMysql'
+
+  - script: sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1qazZAQ!' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
+    displayName: 'DeploySqlserver' 
+
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '2.2.100'
+
+  - script: sh runtests.sh
+    displayName: 'RunTestCases'
+
