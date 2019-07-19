@@ -1,13 +1,16 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
+using Serilog.Core;
 
 namespace Sop.Spider.Analyzer
 {
 	/// <summary>
-	/// 数据格式化
+	/// 数据格式化属性的基类
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 	public abstract class FormatBaseAttribute : System.Attribute
 	{
+		private readonly ILogger _logger;
 		/// <summary>
 		/// 构造方法
 		/// </summary>
@@ -22,7 +25,7 @@ namespace Sop.Spider.Analyzer
 		public string Name { get; set; }
 
 		/// <summary>
-		/// 如果被格式化的值为空的返回值
+		/// 默认属性，如果被格式化的值为空的返回值
 		/// </summary>
 		public string ValueWhenNull { get; set; }
 

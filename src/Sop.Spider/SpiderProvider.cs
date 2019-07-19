@@ -3,6 +3,7 @@ using Sop.Spider.DownloadAgent;
 using Sop.Spider.DownloadAgentRegisterCenter;
 using Sop.Spider.Statistics;
 using System;
+using Sop.Spider;
 
 namespace Sop.Spider
 {

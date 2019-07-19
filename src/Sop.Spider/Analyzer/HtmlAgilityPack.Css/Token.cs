@@ -325,8 +325,8 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
 
         private static void ValidateTextArgument(string text)
         {
-            if (text == null) throw new ArgumentNullException("text");
-            if (text.Length == 0) throw new ArgumentException(null, "text");
+            if (text == null) throw new SpiderArgumentException("text");
+            if (text.Length == 0) throw new SpiderArgumentException(null, "text");
         }
     }
 }

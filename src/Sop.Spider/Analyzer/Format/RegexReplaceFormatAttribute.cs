@@ -4,21 +4,27 @@ using System.Text.RegularExpressions;
 namespace Sop.Spider.Analyzer
 {
 	/// <summary>
-	///  In a specified input string, replaces all strings that match a specified regular expression with a specified replacement string.
+	///  正则格式化属性
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 	public class RegexReplaceFormatAttribute : FormatBaseAttribute
 	{
 		/// <summary>
-		/// 正则表达式
+		/// 正则类型
 		/// </summary>
-		public string Pattern { get; set; }
+		public RegexType RegexType { get; set; } = RegexType.Customize;
+		/// <summary>
+		/// 表达式
+		/// </summary>
+		public string Expression { get; set; }
 
 		/// <summary>
-		/// The replacement string
+		/// 要替换的新值
 		/// </summary>
-		public string NewValue{ get; set; }
-		 
+		public string NewValue { get; set; }
+
+
+
 		/// <summary>
 		/// 实现数值的转化
 		/// </summary>
@@ -26,7 +32,11 @@ namespace Sop.Spider.Analyzer
 		/// <returns>被格式化后的数值</returns>
 		protected override string FormatValue(string value)
 		{
-			return Regex.Replace(value, Pattern, NewValue);
+			if (string.IsNullOrWhiteSpace(NewValue))
+			{
+				NewValue = "";
+			}
+			return Regex.Replace(value, Expression, NewValue);
 		}
 
 		/// <summary>
@@ -34,10 +44,11 @@ namespace Sop.Spider.Analyzer
 		/// </summary>
 		protected override void CheckArguments()
 		{
-			if (string.IsNullOrWhiteSpace(Pattern))
+			if (RegexType.Customize == RegexType && string.IsNullOrWhiteSpace(Expression))
 			{
-				throw new ArgumentException("Pattern should not be null or empty");
+				throw new SpiderArgumentException("RegexReplaceFormatAttribute ");
 			}
+			 
 		}
 	}
 }

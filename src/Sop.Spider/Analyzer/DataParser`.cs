@@ -153,45 +153,46 @@ namespace Sop.Spider.Analyzer
 			foreach (var field in _model.ValueSelectors)
 			{
 				string value = null;
+				#region 数据选择
 				if (field.Type == SelectorType.Enviroment)
 				{
 					switch (field.Expression)
 					{
 						case "INDEX":
-						{
-							value = index.ToString();
-							break;
-						}
+							{
+								value = index.ToString();
+								break;
+							}
 
 						case "GUID":
-						{
-							value = Guid.NewGuid().ToString();
-							break;
-						}
+							{
+								value = Guid.NewGuid().ToString();
+								break;
+							}
 
 						case "DATE":
 						case "TODAY":
-						{
-							value = DateTime.Now.Date.ToString("yyyy-MM-dd");
-							break;
-						}
+							{
+								value = DateTime.Now.Date.ToString("yyyy-MM-dd");
+								break;
+							}
 
 						case "DATETIME":
 						case "NOW":
-						{
-							value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-							break;
-						}
-
-						default:
-						{
-							if (environments.ContainsKey(field.Expression))
 							{
-								value = environments[field.Expression];
+								value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+								break;
 							}
 
-							break;
-						}
+						default:
+							{
+								if (environments.ContainsKey(field.Expression))
+								{
+									value = environments[field.Expression];
+								}
+
+								break;
+							}
 					}
 				}
 				else
@@ -200,17 +201,16 @@ namespace Sop.Spider.Analyzer
 					value = field.ValueOption == ValueOption.Count
 						? selectable.SelectList(selector).Nodes().Count().ToString()
 						: selectable.Select(selector)?.GetValue(field.ValueOption);
-				}
+				} 
+				#endregion
 
 				if (!string.IsNullOrWhiteSpace(value))
 				{
+					//格式化数据使用
 					if (field.FormatBaseAttributes != null && field.FormatBaseAttributes.Length > 0)
 					{
 						foreach (var formatter in field.FormatBaseAttributes)
 						{
-#if !DEBUG
-							value = formatter.Format(value);
-#else
 							try
 							{
 								value = formatter.Format(value);
@@ -219,9 +219,10 @@ namespace Sop.Spider.Analyzer
 							{
 								Logger?.LogDebug($"数据格式化失败: {e}");
 							}
-#endif
+
 						}
 					}
+					
 				}
 
 

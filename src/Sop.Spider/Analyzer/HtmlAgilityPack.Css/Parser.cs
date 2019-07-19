@@ -52,8 +52,8 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         public static T Parse<TGenerator, T>(string selectors, TGenerator generator, Func<TGenerator, T> resultor)
             where TGenerator : ISelectorGenerator
         {
-            if (selectors == null) throw new ArgumentNullException("selectors");
-            if (selectors.Length == 0) throw new ArgumentException(null, "selectors");
+            if (selectors == null) throw new SpiderArgumentException("selectors");
+            if (selectors.Length == 0) throw new SpiderArgumentException(null, "selectors");
 
             return Parse(Tokener.Tokenize(selectors), generator, resultor);
         }
@@ -75,8 +75,8 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         public static T Parse<TGenerator, T>(IEnumerable<Token> tokens, TGenerator generator, Func<TGenerator, T> resultor)
             where TGenerator : ISelectorGenerator
         {
-            if (tokens == null) throw new ArgumentNullException("tokens");
-            if (resultor == null) throw new ArgumentNullException("resultor");
+            if (tokens == null) throw new SpiderArgumentException("tokens");
+            if (resultor == null) throw new SpiderArgumentException("resultor");
 
             new Parser(new Reader<Token>(tokens.GetEnumerator()), generator).Parse();
             return resultor(generator);
@@ -266,7 +266,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
                     ) actualParameters[i] = int.Parse(Read(ToTokenSpec(TokenKind.Integer)).Text, CultureInfo.InvariantCulture);
 
                 else if (type.GetGenericTypeDefinition() == typeof(Selector<>)) actualParameters[i] = ParseSubGenerator().Selector;
-                else throw new ArgumentException(string.Format("Unsupported parameter type for custom selector '{0}'", name));
+                else throw new SpiderArgumentException(string.Format("Unsupported parameter type for custom selector '{0}'", name));
             }
             var selector = deleg.Method.DynamicInvoke(actualParameters);
             _generator.CustomSelector(selector);

@@ -101,8 +101,8 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public string Format(string name)
         {
-            if (name == null) throw new ArgumentNullException("name");
-            if (name.Length == 0) throw new ArgumentException(null, "name");
+            if (name == null) throw new SpiderArgumentException("name");
+            if (name.Length == 0) throw new SpiderArgumentException(null, "name");
 
             return Text + (IsNone ? null : "|") + name;
         }

@@ -23,7 +23,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
 
         public SelectorGenerator(IElementOps<TElement> ops, IEqualityComparer<TElement> equalityComparer)
         {
-            if (ops == null) throw new ArgumentNullException("ops");
+            if (ops == null) throw new SpiderArgumentException("ops");
             Ops = ops;
             _equalityComparer = equalityComparer ?? EqualityComparer<TElement>.Default;
             _selectors = new Stack<Selector<TElement>>();
@@ -45,7 +45,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
 
         protected void Add(Selector<TElement> selector)
         {
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (selector == null) throw new SpiderArgumentException("selector");
 
             var top = Selector;
             Selector = top == null ? selector : elements => selector(top(elements));

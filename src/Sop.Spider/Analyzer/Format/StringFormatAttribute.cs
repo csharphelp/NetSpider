@@ -30,7 +30,7 @@ namespace Sop.Spider.Analyzer
 		{
 			if (string.IsNullOrWhiteSpace(FormatStr))
 			{
-				throw new ArgumentException("FormatString should not be null or empty");
+				throw new SpiderArgumentException("FormatString should not be null or empty");
 			}
 		}
 	}

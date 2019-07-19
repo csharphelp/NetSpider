@@ -28,7 +28,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
 
         private static IEnumerable<T> CheckNonNull(IEnumerable<T> e)
         {
-            if (e == null) throw new ArgumentNullException("e");
+            if (e == null) throw new SpiderArgumentException("e");
             return e;
         }
 
@@ -38,7 +38,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public Reader(IEnumerator<T> e)
         {
-            if(e == null) throw new ArgumentNullException("e");
+            if(e == null) throw new SpiderArgumentException("e");
             _enumerator = e;
             _buffer = new Stack<T>();
             RealRead();
@@ -71,7 +71,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         public T Read()
         {
             if (!HasMore)
-                throw new InvalidOperationException();
+                throw new SpiderInvalidOperationException(" Reads and returns the next value.");
 
             var value = _buffer.Pop();
 
@@ -84,13 +84,13 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// <summary>
         /// Peeks the next value waiting to be read.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="SpiderInvalidOperationException">
         /// Thrown if there is no value waiting to be read.
         /// </exception>
         public T Peek()
         {
             if (!HasMore)
-                throw new InvalidOperationException();
+                throw new SpiderInvalidOperationException(" Thrown if there is no value waiting to be read.");
 
             return _buffer.Peek();
         }

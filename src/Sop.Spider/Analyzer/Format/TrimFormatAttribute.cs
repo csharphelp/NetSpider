@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Sop.Spider.Analyzer
 {
@@ -8,25 +9,7 @@ namespace Sop.Spider.Analyzer
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 	public class TrimFormatAttribute : FormatBaseAttribute
 	{
-		/// <summary>
-		/// Trim 类型
-		/// </summary>
-		public enum TrimType
-		{
-			/// <summary>
-			/// 只Trim后边
-			/// </summary>
-			Right,
-			/// <summary>
-			/// 只Trim前边
-			/// </summary>
-			Left,
-
-			/// <summary>
-			/// Trim前后
-			/// </summary>
-			All
-		}
+		
 
 		/// <summary>
 		/// Trim 类型
@@ -44,8 +27,14 @@ namespace Sop.Spider.Analyzer
 			{
 				case TrimType.All:
 					{
-						return value.Trim();
+                        string text= Regex.Replace(value, @"\s", "");
+
+                        return text;
 					}
+				case TrimType.RightLeft:
+				{
+					return value.Trim();
+				}
 				case TrimType.Left:
 					{
 						return value.TrimStart();

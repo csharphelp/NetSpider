@@ -4,9 +4,10 @@ using System.Linq;
 namespace Sop.Spider.Analyzer
 {
 	/// <summary>
-	/// Splits a string into substrings based on the strings in an array. You can specify whether the substrings include empty array elements.
+	/// 截取格式化
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Property)]
+	 
+	  [AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Property, AllowMultiple = false)]
 	public class SplitFormatAttribute : FormatBaseAttribute
 	{
 		/// <summary>
@@ -43,12 +44,12 @@ namespace Sop.Spider.Analyzer
 		{
 			if (Separator == null || Separator.Length == 0)
 			{
-				throw new ArgumentException("Separator should not be null or empty");
+				throw new SpiderArgumentException("Separator should not be null or empty");
 			}
 
 			if (ElementAt < 0)
 			{
-				throw new ArgumentException("ElementAt should larger than 0");
+				throw new SpiderArgumentException("ElementAt should larger than 0");
 			}
 		}
 	}

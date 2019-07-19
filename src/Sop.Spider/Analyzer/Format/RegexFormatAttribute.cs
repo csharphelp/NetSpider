@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace Sop.Spider.Analyzer
 {
 	/// <summary>
+	/// 正则匹配格式化处理器
 	/// 如果能匹配正则表达式则返回True的内容, 如果不符合正则表达式则返回 False的内容
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
@@ -61,7 +62,7 @@ namespace Sop.Spider.Analyzer
 		{
 			if (string.IsNullOrWhiteSpace(Pattern))
 			{
-				throw new ArgumentException("Pattern should not be null or empty");
+				throw new SpiderArgumentException("Pattern should not be null or empty");
 			}
 		}
 	}

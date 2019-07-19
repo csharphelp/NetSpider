@@ -41,7 +41,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static bool IsElement(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return node.NodeType == HtmlNodeType.Element;
         }
 
@@ -50,7 +50,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> Elements(this IEnumerable<HtmlNode> nodes)
         {
-            if (nodes == null) throw new ArgumentNullException("nodes");
+            if (nodes == null) throw new SpiderArgumentException("nodes");
             return nodes.Where(n => n.IsElement());
         }
 
@@ -59,7 +59,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> Children(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return node.ChildNodes;
         }
 
@@ -68,7 +68,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> Elements(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return node.Children().Elements();
         }
 
@@ -77,7 +77,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> ElementsAfterSelf(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return node.NodesAfterSelf().Elements();
         }
 
@@ -86,7 +86,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> NodesAfterSelf(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return NodesAfterSelfImpl(node);
         }
 
@@ -101,7 +101,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> ElementsBeforeSelf(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return node.NodesBeforeSelf().Elements();
         }
 
@@ -110,7 +110,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> NodesBeforeSelf(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return NodesBeforeSelfImpl(node);
         }
 
@@ -126,7 +126,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> DescendantsAndSelf(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return Enumerable.Repeat(node, 1).Concat(node.Descendants());
         }
 
@@ -135,7 +135,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<HtmlNode> Descendants(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
             return DescendantsImpl(node);
         }
 
@@ -156,7 +156,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static string GetBeginTagString(this HtmlNode node)
         {
-            if (node == null) throw new ArgumentNullException("node");
+            if (node == null) throw new SpiderArgumentException("node");
 
             if (!node.IsElement())
                 return string.Empty;

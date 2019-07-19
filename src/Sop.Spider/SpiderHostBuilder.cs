@@ -85,7 +85,7 @@ namespace Sop.Spider
 		{
 			if (_hostBuilt)
 			{
-				throw new InvalidOperationException("Build can only be called once.");
+				throw new SpiderInvalidOperationException("Build can only be called once.");
 			}
 
 			Framework.SetMultiThread();

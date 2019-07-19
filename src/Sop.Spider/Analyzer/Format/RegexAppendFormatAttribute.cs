@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace Sop.Spider.Analyzer
 {
 	/// <summary>
+	/// 正则追加更是发处理器
 	/// 如果数值符合正则表达式则在数值后面追加指定的内容. 如采集到的内容为数字, 则在后面添加 "人"
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
@@ -37,12 +38,12 @@ namespace Sop.Spider.Analyzer
 		{
 			if (string.IsNullOrWhiteSpace(Pattern))
 			{
-				throw new ArgumentException("Pattern should not be null or empty");
+				throw new SpiderArgumentException("Pattern should not be null or empty");
 			}
 
 			if (string.IsNullOrWhiteSpace(AppendValue))
 			{
-				throw new ArgumentException("Append should not be null or empty");
+				throw new SpiderArgumentException("Append should not be null or empty");
 			}
 		}
 	}

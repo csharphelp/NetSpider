@@ -65,7 +65,7 @@ namespace Sop.Spider.Download
             /// <exception cref="ArgumentNullException"></exception>
             public ProxyValidator(IWebProxy webProxy)
             {
-                WebProxy = webProxy ?? throw new ArgumentNullException(nameof(webProxy));
+                WebProxy = webProxy ?? throw new SpiderArgumentException(nameof(webProxy));
             }
 
             /// <summary>
@@ -79,7 +79,7 @@ namespace Sop.Spider.Download
             {
                 if (targetAddress == null)
                 {
-                    throw new ArgumentNullException(nameof(targetAddress));
+                    throw new SpiderArgumentException(nameof(targetAddress));
                 }
 
                 return Validate(WebProxy, targetAddress, timeout);
@@ -106,7 +106,7 @@ namespace Sop.Spider.Download
             {
                 if (webProxy == null)
                 {
-                    throw new ArgumentNullException(nameof(webProxy));
+                    throw new SpiderArgumentException(nameof(webProxy));
                 }
 
                 var httpProxy = webProxy as HttpProxy ?? HttpProxy.FromWebProxy(webProxy, targetAddress);
@@ -194,7 +194,7 @@ namespace Sop.Spider.Download
             /// <param name="proxyAddress">代理服务器地址</param>
             // ReSharper disable once UnusedMember.Local
             public HttpProxy(string proxyAddress)
-                : this(new Uri(proxyAddress ?? throw new ArgumentNullException(nameof(proxyAddress))))
+                : this(new Uri(proxyAddress ?? throw new SpiderArgumentException(nameof(proxyAddress))))
             {
             }
 
@@ -207,7 +207,7 @@ namespace Sop.Spider.Download
             {
                 if (proxyAddress == null)
                 {
-                    throw new ArgumentNullException(nameof(proxyAddress));
+                    throw new SpiderArgumentException(nameof(proxyAddress));
                 }
 
                 Host = proxyAddress.Host;
@@ -222,7 +222,7 @@ namespace Sop.Spider.Download
             /// <exception cref="ArgumentNullException"></exception>
             public HttpProxy(string host, int port)
             {
-                Host = host ?? throw new ArgumentNullException(nameof(host));
+                Host = host ?? throw new SpiderArgumentException(nameof(host));
                 Port = port;
             }
 
@@ -274,7 +274,7 @@ namespace Sop.Spider.Download
             {
                 if (targetAddress == null)
                 {
-                    throw new ArgumentNullException(nameof(targetAddress));
+                    throw new SpiderArgumentException(nameof(targetAddress));
                 }
 
                 const string crlf = "\r\n";
@@ -336,12 +336,12 @@ namespace Sop.Spider.Download
             {
                 if (webProxy == null)
                 {
-                    throw new ArgumentNullException(nameof(webProxy));
+                    throw new SpiderArgumentException(nameof(webProxy));
                 }
 
                 if (targetAddress == null)
                 {
-                    throw new ArgumentNullException(nameof(targetAddress));
+                    throw new SpiderArgumentException(nameof(targetAddress));
                 }
 
                 var proxyAddress = webProxy.GetProxy(targetAddress);

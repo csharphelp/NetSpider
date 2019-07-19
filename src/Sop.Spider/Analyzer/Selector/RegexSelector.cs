@@ -29,7 +29,7 @@ namespace Sop.Spider.Analyzer
 		{
 			if (string.IsNullOrWhiteSpace(pattern))
 			{
-				throw new ArgumentException("regex must not be empty");
+				throw new SpiderArgumentException("regex must not be empty");
 			}
 			_pattern = pattern;
 			_regex = new Regex(pattern, RegexOptions.IgnoreCase);

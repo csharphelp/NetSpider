@@ -77,35 +77,47 @@ namespace Sample.samples
 			//	new Request("https://news.cnblogs.com/n/page/2/", new Dictionary<string, string> {{"网站", "博客园"}}));
 
 			AddRequests(
-				new Request("https://news.cnblogs.com/n/page/22/", new Dictionary<string, string> { { "网站sop", "博客园sop" } })
+				new Request("https://news.cnblogs.com/n/page/22/", new Dictionary<string, string> { { "网站key", "博客园value " } })
 				 );
 		}
 
-		[Schema("cnblogs", "cnblogs_entity_model_1")]
-		[EntitySelect(Expression = ".//div[@class='news_block']",Type = SelectorType.XPath)]
-		[ValueSelect(Expression = ".//a[@class='current']", Name = "内容", Type = SelectorType.XPath)]
+		[Schema("cnblogs", "cnblogs_entity_model_2")]
+		[EntitySelect(Expression = ".//div[@class='news_block']", Type = SelectorType.XPath)]
+		[ValueSelect(Expression = ".//a[@class='current']", Name = "内容key", Type = SelectorType.XPath)]
 		//[FollowSelect(XPaths = new[] { "//div[@class='pager']" })]
 		public class CnblogsEntry : EntityBase<CnblogsEntry>
 		{
 			protected override void Configure()
 			{
-
 				HasIndex(x => x.Title);
 				HasIndex(x => new { x.WebSite, x.Guid }, true);
 			}
-
+			/// <summary>
+			/// 索引
+			/// </summary>
 			public int Id { get; set; }
 
+			/// <summary>
+			/// 使用环境，默认类别、限制长度，内容取 当前环境
+			/// 去设置ValueSelect中key是{内容key}的Expression的数值
+			/// </summary>
 			[Required]
 			[StringLength(200)]
-			[ValueSelect(Expression = "类别", Type = SelectorType.Enviroment)]
+			[ValueSelect(Expression = "内容key", Type = SelectorType.Enviroment)]
+			[TrimFormat(Type = TrimType.All)]
 			public string Category { get; set; }
 
+            /// <summary>
+			/// 
+			/// </summary>
 			[Required]
 			[StringLength(200)]
-			[ValueSelect(Expression = "网站sop", Type = SelectorType.Enviroment)]
-
+			[ValueSelect(Expression = "网站key", Type = SelectorType.Enviroment)]
+			[TrimFormat(Type = TrimType.RightLeft)]
 			public string WebSite { get; set; }
+
+
+
 
 			[StringLength(200)]
 			[ValueSelect(Expression = "//title")]
@@ -123,6 +135,12 @@ namespace Sample.samples
 			public string Url { get; set; }
 
 
+			[ValueSelect(Expression = ".//div[@class='entry_summary']/a/img/@src")]
+            [DownloadFormat()]
+			public string ImgUrl { get; set; }
+
+
+
 
 			[ValueSelect(Expression = ".//div[@class='entry_footer']", ValueOption = ValueOption.OuterHtml)]
 			public string FooterHtml { get; set; }
@@ -130,7 +148,7 @@ namespace Sample.samples
 
 
 
-         
+
 			[ValueSelect(Expression = ".//div[@class='entry_footer']/span[@class='comment']",
 				ValueOption = ValueOption.InnerText)]
 			public string Comment { get; set; }
@@ -139,6 +157,7 @@ namespace Sample.samples
 
 
 			[ValueSelect(Expression = ".//div[@class='entry_footer']/span[@class='view']", ValueOption = ValueOption.InnerText)]
+            [RegexReplaceFormat(Expression = @"^[1 - 9]\d *$")]
 			public string View { get; set; }
 
 

@@ -14,7 +14,7 @@ namespace Sop.Spider.Common
 		{
 			if (maxThreads <= 0)
 			{
-				throw new ArgumentException($"{nameof(maxThreads)} should larger than 0.");
+				throw new SpiderArgumentException($"{nameof(maxThreads)} should larger than 0.");
 			}
 
 			MaxThreads = maxThreads;

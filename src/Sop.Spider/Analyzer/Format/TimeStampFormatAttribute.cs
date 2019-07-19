@@ -36,7 +36,7 @@ namespace Sop.Spider.Analyzer
 					}
 				default:
 					{
-						throw new ArgumentException("Wrong input timestamp");
+						throw new SpiderArgumentException("Wrong input timestamp");
 					}
 			}
 			return dt.ToString("yyyy-MM-dd HH:mm:ss");

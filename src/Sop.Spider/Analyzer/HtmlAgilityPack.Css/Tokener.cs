@@ -22,7 +22,7 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
         /// </summary>
         public static IEnumerable<Token> Tokenize(TextReader reader)
         {
-            if (reader == null) throw new ArgumentNullException("reader");
+            if (reader == null) throw new SpiderArgumentException("reader");
             return Tokenize(reader.ReadToEnd());
         }
 

@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace Sop.Spider.Analyzer
 {
 	/// <summary>
+	/// 中文转数字
 	/// 把包含中文的字符串转化成数字
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]

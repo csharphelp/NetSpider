@@ -42,7 +42,7 @@ namespace Sop.Spider.Analyzer
                         {
                             return Selectors.Regex(expression, group);
                         }
-                        throw new ArgumentException($"Regex argument should be a number set to group: {selector}");
+                        throw new SpiderArgumentException($"Regex argument should be a number set to group: {selector}");
                     }
                     case SelectorType.XPath:
                     {
@@ -63,7 +63,7 @@ namespace Sop.Spider.Analyzer
         {
             if (string.IsNullOrWhiteSpace(selector.Expression))
             {
-                throw new ArgumentException($"Expression of {selector} should not be null/empty");
+                throw new SpiderArgumentException($"Expression of {selector} should not be null/empty");
             }
         }
     }

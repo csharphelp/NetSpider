@@ -34,7 +34,7 @@ namespace Sop.Spider
 
 			if (string.IsNullOrEmpty(message))
 			{
-				throw new ArgumentNullException(nameof(message));
+				throw new SpiderArgumentException(nameof(message));
 			}
 
 			TException exception = (TException) Activator.CreateInstance(typeof(TException), message);

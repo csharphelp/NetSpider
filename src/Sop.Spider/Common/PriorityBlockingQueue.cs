@@ -93,7 +93,7 @@ namespace Sop.Spider.Common
 		public T Top()
 		{
 			if (Count > 0) return _heap[0];
-			throw new InvalidOperationException("优先队列为空");
+			throw new SpiderInvalidOperationException("优先队列为空");
 		}
 
 		private void SiftUp(int n)
