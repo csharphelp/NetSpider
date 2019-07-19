@@ -9,7 +9,15 @@
 
 ### 介绍
 
-Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且快速的高级Web爬行和抓取框架
+Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且快速的高级Web爬行和抓取框架,
+此项目是[![DotnetSpider](https://github.com/dotnetcore/DotnetSpider)]Fork的，因原始项目
+无法满足现有需求，随创建本新项目。并且修改默认命名空间
+### 现阶段任务
+
+1. 增加redis 计数器
+2. 移除网络中心ADSL拨号功能
+3. 增加了Sellenium 支持AJAX.
+4. 优化下载器，对文件url解析处理（设想）。
 
 ### 修改
 

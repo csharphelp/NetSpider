@@ -5,23 +5,26 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sop.Spider", "src\DotnetSpider\Sop.Spider.csproj", "{2479A45A-4592-4AF4-8115-E615CF34CC98}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "src\DotnetSpider.Sample\Sample.csproj", "{E3DEC5C0-D82B-456E-AFBC-8019273ACD6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "src\Sample\Sample.csproj", "{D6533595-1C03-4D99-951F-F2F45E734A7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.ExcelExpression", "src\DotnetSpider.ExcelExpression\DotnetSpider.ExcelExpression.csproj", "{A1AD2BFD-F0D0-4EB1-836B-98BE6E5BF56C}"
+
+
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Mongo", "src\DotnetSpider.Mongo\DotnetSpider.Mongo.csproj", "{0DFD28D7-E0E8-4F81-84E9-DB6EA497F08C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.ExcelExpression", "src\_bak\DotnetSpider.ExcelExpression\DotnetSpider.ExcelExpression.csproj", "{A1AD2BFD-F0D0-4EB1-836B-98BE6E5BF56C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Kafka", "src\DotnetSpider.Kafka\DotnetSpider.Kafka.csproj", "{AC87EA41-A0EF-4FCD-8230-5CAA76BEC847}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Mongo", "src\_bak\DotnetSpider.Mongo\DotnetSpider.Mongo.csproj", "{0DFD28D7-E0E8-4F81-84E9-DB6EA497F08C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.PostgreSql", "src\DotnetSpider.PostgreSql\DotnetSpider.PostgreSql.csproj", "{62069E7E-47BE-467F-87CA-233555C5C45E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Kafka", "src\_bak\DotnetSpider.Kafka\DotnetSpider.Kafka.csproj", "{AC87EA41-A0EF-4FCD-8230-5CAA76BEC847}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.DownloaderAgent", "src\DotnetSpider.DownloaderAgent\DotnetSpider.DownloaderAgent.csproj", "{9AE48371-40AA-4E27-804A-27EFD9AEA1EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.PostgreSql", "src\_bak\DotnetSpider.PostgreSql\DotnetSpider.PostgreSql.csproj", "{62069E7E-47BE-467F-87CA-233555C5C45E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Spiders", "src\DotnetSpider.Spiders\DotnetSpider.Spiders.csproj", "{C07ACDE1-1E56-4ACD-8F63-50C708F7D25C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.DownloaderAgent", "src\_bak\DotnetSpider.DownloaderAgent\DotnetSpider.DownloaderAgent.csproj", "{9AE48371-40AA-4E27-804A-27EFD9AEA1EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Portal", "src\DotnetSpider.Portal\DotnetSpider.Portal.csproj", "{7D557A90-B217-4182-8FEB-ECFEEB7C2838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Spiders", "src\_bak\DotnetSpider.Spiders\DotnetSpider.Spiders.csproj", "{C07ACDE1-1E56-4ACD-8F63-50C708F7D25C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.DownloaderAgentRegisterCenter", "src\DotnetSpider.DownloaderAgentRegisterCenter\DotnetSpider.DownloaderAgentRegisterCenter.csproj", "{2AE96969-4113-492F-8307-FA6FEC90C3B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.Portal", "src\_bak\DotnetSpider.Portal\DotnetSpider.Portal.csproj", "{7D557A90-B217-4182-8FEB-ECFEEB7C2838}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpider.DownloaderAgentRegisterCenter", "src\_bak\DotnetSpider.DownloaderAgentRegisterCenter\DotnetSpider.DownloaderAgentRegisterCenter.csproj", "{2AE96969-4113-492F-8307-FA6FEC90C3B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_bak", "_bak", "{BECCA85F-0ABD-4ACD-9199-B22D5EA28152}"
 EndProject
@@ -37,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{59F35D6F-183
 		README.md = README.md
 		runtests.sh = runtests.sh
 	EndProjectSection
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,10 +51,6 @@ Global
 		{2479A45A-4592-4AF4-8115-E615CF34CC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2479A45A-4592-4AF4-8115-E615CF34CC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2479A45A-4592-4AF4-8115-E615CF34CC98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3DEC5C0-D82B-456E-AFBC-8019273ACD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3DEC5C0-D82B-456E-AFBC-8019273ACD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3DEC5C0-D82B-456E-AFBC-8019273ACD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3DEC5C0-D82B-456E-AFBC-8019273ACD6D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A1AD2BFD-F0D0-4EB1-836B-98BE6E5BF56C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1AD2BFD-F0D0-4EB1-836B-98BE6E5BF56C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1AD2BFD-F0D0-4EB1-836B-98BE6E5BF56C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -84,6 +83,10 @@ Global
 		{2AE96969-4113-492F-8307-FA6FEC90C3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AE96969-4113-492F-8307-FA6FEC90C3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AE96969-4113-492F-8307-FA6FEC90C3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6533595-1C03-4D99-951F-F2F45E734A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6533595-1C03-4D99-951F-F2F45E734A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6533595-1C03-4D99-951F-F2F45E734A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6533595-1C03-4D99-951F-F2F45E734A7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
