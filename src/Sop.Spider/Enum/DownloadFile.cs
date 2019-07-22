@@ -9,6 +9,9 @@ namespace Sop.Spider
 	/// </summary>
 	public enum DownloadFile
 	{
+		/// <summary>
+		/// 不下载
+		/// </summary>
 		NotDownLoad,
         /// <summary>
 		/// 分类下载

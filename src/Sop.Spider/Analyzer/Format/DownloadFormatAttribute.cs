@@ -10,6 +10,15 @@ namespace Sop.Spider.Analyzer
 	/// </summary>
 	public class DownloadFormatAttribute : FormatBaseAttribute
 	{
+		/// <summary>
+		/// 下载文件类型
+		/// </summary>
+		public DownloadFile DownloadFile { get; set; } = DownloadFile.NotDownLoad; 
+
+        /// <summary>
+		/// 存储路径位置
+		/// </summary>
+        public DownloadFileStorageType DownloadFileStorageType { get; set; }
 
 		/// <summary>
 		/// 执行下载操作
@@ -43,29 +52,30 @@ namespace Sop.Spider.Analyzer
 				//}
 				try
 				{
-					FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
-				
-					if (WebRequest.Create(filePath) is HttpWebRequest request)
-					{ 
-						if (request.GetResponse() is HttpWebResponse response)
+					using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write, FileShare.ReadWrite))
+					{
+						if (WebRequest.Create(filePath) is HttpWebRequest request)
 						{
-							Stream responseStream = response.GetResponseStream();
-							byte[] bArr = new byte[1024];
-							if (responseStream != null)
+							if (request.GetResponse() is HttpWebResponse response)
 							{
-								int size = responseStream.Read(bArr, 0, (int)bArr.Length);
-								while (size > 0)
+								Stream responseStream = response.GetResponseStream();
+								byte[] bArr = new byte[1024];
+								if (responseStream != null)
 								{
-									//stream.Write(bArr, 0, size);
-									fs.Write(bArr, 0, size);
-									size = responseStream.Read(bArr, 0, (int)bArr.Length);
+									int size = responseStream.Read(bArr, 0, (int)bArr.Length);
+									while (size > 0)
+									{
+										//stream.Write(bArr, 0, size);
+										fs.Write(bArr, 0, size);
+										size = responseStream.Read(bArr, 0, (int)bArr.Length);
+									}
 								}
 							}
-							fs.Close();
-							if (responseStream != null)
-								responseStream.Close();
 						}
 					}
+
+					GC.Collect();
+					GC.WaitForFullGCComplete();
 
 				}
 				catch (Exception ex)
@@ -87,6 +97,12 @@ namespace Sop.Spider.Analyzer
 		/// </summary>
 		protected override void CheckArguments()
 		{
+			//if (DownloadFile == null)
+			//{
+
+			//	DownloadFile = DownloadFile.NotDownLoad;
+			//	//throw new SpiderException("DownloadFile 下载文件为空");
+			//}
 		}
 	}
 }
