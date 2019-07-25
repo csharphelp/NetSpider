@@ -68,6 +68,7 @@ namespace Sop.Spider.Analyzer
 
             var followSelectors = type.GetCustomAttributes(typeof(FollowSelectAttribute), true).Select(x => (FollowSelectAttribute) x)
                 .ToList();
+
             var sharedValueSelectors = type.GetCustomAttributes(typeof(ValueSelectAttribute), true)
                 .Select(x => (ValueSelectAttribute) x).ToList();
 

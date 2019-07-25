@@ -68,7 +68,7 @@ namespace Sop.Spider.Statistics
         /// <param name="page"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        Task<List<DownloadStatistics>> GetDownloadStatisticsListAsync(int page, int size);
+        Task<IEnumerable<DownloadStatistics>> GetDownloadStatisticsListAsync(int page, int size);
 
         /// <summary>
         /// 查询指定下载代理器的统计信息
@@ -90,7 +90,7 @@ namespace Sop.Spider.Statistics
         /// <param name="page"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        Task<List<SpiderStatistics>> GetSpiderStatisticsListAsync(int page, int size);
+        Task<IEnumerable<SpiderStatistics>> GetSpiderStatisticsListAsync(int page, int size);
 
         /// <summary>
         /// 添加总请求数

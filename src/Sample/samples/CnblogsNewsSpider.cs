@@ -25,7 +25,7 @@ namespace Sample.samples
 		 * 0 此类爬虫存储抓取网页存储数据库
 		 * 1 Depth 有什么影响 
 		 *  2 Speed 有什么作用 
-		 *  3 FollowSelectAttribute 这个属性为啥有时候有效 有时候无效在哪里使用
+		 *  3 FollowSelectAttribute 
 	    */
 
 
@@ -59,7 +59,7 @@ namespace Sample.samples
 						x.UseFileLocker();
 						x.UseDefaultInternetDetector();
 					});
-					services.AddStatisticsCenter(x => x.UseMemory());
+					services.AddStatisticsCenter(x => x.UseRedis());
 				}).Register<CnblogsNewsSpider>();
 			var provider = builder.Build();
 			var spider = provider.Create<CnblogsNewsSpider>();
@@ -69,9 +69,8 @@ namespace Sample.samples
 
 		protected override void Initialize()
 		{
-			//DownloadFile = DownloadFile.ImgAgeDownLoad;
-			AddDataFlow(new DataParser<CnblogsEntry>()).
-			AddDataFlow(new MySqlEntityStorage(StorageType.InsertIgnoreDuplicate, "Database='Sop.Spider';Data Source=127.0.0.1;password=123456;User ID=root;Port=3306;"));
+
+			AddDataFlow(new DataParser<CnblogsEntry>()).AddDataFlow(new MySqlEntityStorage(StorageType.InsertIgnoreDuplicate, "Database='cnblogs';Data Source=127.0.0.1;password=123456;User ID=root;Port=3306;"));
 			//AddRequests(
 			//	new Request("https://news.cnblogs.com/n/page/5/", new Dictionary<string, string> {{"网站", "博客园"}}),
 			//	new Request("https://news.cnblogs.com/n/page/2/", new Dictionary<string, string> {{"网站", "博客园"}}));
@@ -81,10 +80,10 @@ namespace Sample.samples
 				 );
 		}
 
-		[Schema("cnblogs", "cnblogs_entity_model_2")]
+		[Schema("cnblogs", "cnblogs_entity_model_12", TablePostfix.Today)]
 		[EntitySelect(Expression = ".//div[@class='news_block']", Type = SelectorType.XPath)]
 		[ValueSelect(Expression = ".//a[@class='current']", Name = "内容key", Type = SelectorType.XPath)]
-		//[FollowSelect(XPaths = new[] { "//div[@class='pager']" })]
+		[FollowSelect(XPaths = new[] { "//div[@class='pager']" })]
 		public class CnblogsEntry : EntityBase<CnblogsEntry>
 		{
 			protected override void Configure()
@@ -107,7 +106,7 @@ namespace Sample.samples
 			[TrimFormat(Type = TrimType.All)]
 			public string Category { get; set; }
 
-            /// <summary>
+			/// <summary>
 			/// 
 			/// </summary>
 			[Required]
@@ -136,7 +135,7 @@ namespace Sample.samples
 
 
 			[ValueSelect(Expression = ".//div[@class='entry_summary']/a/img/@src")]
-            [DownloadFormat()]
+			[DownloadFormat()]
 			public string ImgUrl { get; set; }
 
 
@@ -157,7 +156,7 @@ namespace Sample.samples
 
 
 			[ValueSelect(Expression = ".//div[@class='entry_footer']/span[@class='view']", ValueOption = ValueOption.InnerText)]
-            [RegexReplaceFormat(Expression = @"^[1 - 9]\d *$")]
+			[RegexReplaceFormat(Expression = @"^[1 - 9]\d *$")]
 			public string View { get; set; }
 
 

@@ -2,9 +2,9 @@ using System;
 
 namespace Sop.Spider
 {
-
-
-  
+	/// <summary>
+	/// SpiderFormatException“Ï≥£
+	/// </summary>
 	public class SpiderFormatException : FormatException
 	{
 		public SpiderFormatException(string msg) : base(msg)

@@ -170,9 +170,9 @@ namespace Sop.Spider.Statistics
 		/// <param name="page"></param>
 		/// <param name="size"></param>
 		/// <returns></returns>
-		public Task<List<DownloadStatistics>> GetDownloadStatisticsListAsync(int page, int size)
+		public Task<IEnumerable<DownloadStatistics>> GetDownloadStatisticsListAsync(int page, int size)
 		{
-			return Task.FromResult(_downloadStatisticsDict.Values.ToList());
+			return Task.FromResult(_downloadStatisticsDict.Values.AsEnumerable());
 		}
 
 		/// <summary>
@@ -203,9 +203,9 @@ namespace Sop.Spider.Statistics
 		/// <param name="page"></param>
 		/// <param name="size"></param>
 		/// <returns></returns>
-		public Task<List<SpiderStatistics>> GetSpiderStatisticsListAsync(int page, int size)
+		public Task<IEnumerable<SpiderStatistics>> GetSpiderStatisticsListAsync(int page, int size)
 		{
-			return Task.FromResult(_spiderStatisticsDict.Values.ToList());
+			return Task.FromResult(_spiderStatisticsDict.Values.AsEnumerable());
 		}
 	}
 }

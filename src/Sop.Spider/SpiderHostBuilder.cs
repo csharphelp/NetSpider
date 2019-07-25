@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace Sop.Spider
 {
 	/// <summary>
-	/// 
+	/// 主要服务器
 	/// </summary>
 	public class SpiderHostBuilder
 	{
@@ -107,7 +107,7 @@ namespace Sop.Spider
 				{
 					if (hostedService is IRunnable runnable && !runnable.IsRunning)
 					{
-						Thread.Sleep(100);
+						Thread.Sleep(1000);
 					}
 					else
 					{

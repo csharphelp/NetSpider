@@ -237,7 +237,8 @@ namespace Sop.Spider.DownloadAgent
 			}
 #if DEBUG
 
-			Logger?.LogDebug($"下载器代理 {_options.AgentId} 接收到消息: {message}");
+			//Logger?.LogDebug($"下载器代理 {_options.AgentId} 接收到消息: {message}");
+			Logger?.LogDebug($"下载器代理 {_options.AgentId} 接收到消息");
 #endif
 
 			try

@@ -10,6 +10,10 @@ using Sop.Spider.Network;
 using Sop.Spider.Network.InternetDetector;
 using Sop.Spider.Statistics;
 using System;
+using System.Collections.Generic;
+using Serilog.Core;
+using StackExchange.Redis;
+ 
 
 namespace Sop.Spider
 {
@@ -171,9 +175,21 @@ namespace Sop.Spider
 			builder.Services.AddSingleton<IStatisticsStore, MySqlStatisticsStore>();
 			return builder;
 		}
+		/// <summary>
+		///  π”√Redis
+		/// </summary>
+		/// <param name="builder"></param>
+		/// <returns></returns>
+		public static StatisticsBuilder UseRedis(this StatisticsBuilder builder)
+		{
+			Check.NotNull(builder, nameof(builder));
+			
+			builder.Services.AddSingleton<IStatisticsStore, RedisStatisticsStore>();
+			return builder;
+		}
 
 		#endregion
-		
+
 		#region Sop.Spider
 
 		public static IServiceCollection AddSpider(this IServiceCollection services)

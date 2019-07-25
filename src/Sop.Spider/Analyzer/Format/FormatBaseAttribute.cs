@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
-using Serilog.Core;
 
 namespace Sop.Spider.Analyzer
 {
@@ -10,15 +9,19 @@ namespace Sop.Spider.Analyzer
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 	public abstract class FormatBaseAttribute : System.Attribute
 	{
-		private readonly ILogger _logger;
+		
 		/// <summary>
 		/// 构造方法
 		/// </summary>
 		protected FormatBaseAttribute()
 		{
+			
 			Name = GetType().Name;
 		}
-
+        /// <summary>
+		/// 
+		/// </summary>
+		public ILogger Logger { get; set; }
 		/// <summary>
 		/// 格式化的名称
 		/// </summary>

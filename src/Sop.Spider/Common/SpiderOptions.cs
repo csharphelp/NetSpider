@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using Sop.Spider.DataStorage;
+using StackExchange.Redis;
 
 namespace Sop.Spider.Common
 {
@@ -10,7 +11,57 @@ namespace Sop.Spider.Common
 	public class SpiderOptions
 	{
 		private readonly IConfiguration _configuration;
-		 
+
+
+		//public  string CountType => "statistics";
+		/// <summary>
+		/// 租户类型
+		/// </summary>
+		public string TenantType => "Spider";
+
+		public ConfigurationOptions GetRedisOptions
+		{
+			get
+			{
+				ConfigurationOptions option = new ConfigurationOptions
+				{
+					AllowAdmin = true,
+					AbortOnConnectFail = false,
+					SyncTimeout = 6000,
+					Password = "sopcce.com.cc2018"
+				};
+				option.EndPoints.Add("127.0.0.1", 6379);
+				var test = ConnectionMultiplexer.Connect(option, null);
+				if (test.IsConnected == true)
+				{
+					return option;
+				}
+				#region 尝试启动本机服务 windows服务
+
+				//var serviceControllers = ServiceController.GetServices();
+				//var listDictionary = new Dictionary<string, ServiceController>();
+				//foreach (var service in serviceControllers)
+				//{
+				//	if (service.ServiceName.ToLower().Contains("redis"))
+				//	{
+				//		listDictionary.Add(service.ServiceName.ToLower(), service);
+				//	}
+				//}
+				//if (listDictionary.ContainsKey("redis"))
+				//{
+				//	throw new System.Exception("不存在redis服务");
+				//}
+				//foreach (var info in listDictionary)
+				//{
+				//	if (info.Value.Status != ServiceControllerStatus.Running)
+				//	{
+				//		info.Value.Start();
+				//	}
+				//}
+				#endregion
+				return null;
+			}
+		}
 
 		public SpiderOptions(IConfiguration configuration)
 		{
@@ -35,7 +86,10 @@ namespace Sop.Spider.Common
 		public string ConnectionString => _configuration["ConnectionString"];
 
 
-		public int RequestsTime => this.AppSettings<int>("requestsTime",60);
+
+
+
+		public int RequestsTime => this.AppSettings<int>("requestsTime", 60);
 
 		/// <summary>
 		/// 数据库连接字符串

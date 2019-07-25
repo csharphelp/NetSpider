@@ -103,7 +103,7 @@ namespace Sop.Spider.DataStorage
 			{
 				foreach (var item in context.GetParseItems())
 				{
-					var tableMetadata = (TableMetadata) context[item.Key];
+					var tableMetadata = (TableMetadata)context[item.Key];
 
 					SqlStatements sqlStatements = GetSqlStatements(tableMetadata);
 
@@ -126,30 +126,30 @@ namespace Sop.Spider.DataStorage
 							switch (StorageType)
 							{
 								case StorageType.Insert:
-								{
-									await conn.ExecuteAsync(sqlStatements.InsertSql, list, transaction);
-									break;
-								}
-								case StorageType.InsertIgnoreDuplicate:
-								{
-									await conn.ExecuteAsync(sqlStatements.InsertIgnoreDuplicateSql, list, transaction);
-									break;
-								}
-								case StorageType.Update:
-								{
-									if (string.IsNullOrWhiteSpace(sqlStatements.UpdateSql))
 									{
-										throw new SpiderException("未能生成更新 SQL");
+										await conn.ExecuteAsync(sqlStatements.InsertSql, list, transaction);
+										break;
 									}
+								case StorageType.InsertIgnoreDuplicate:
+									{
+										await conn.ExecuteAsync(sqlStatements.InsertIgnoreDuplicateSql, list, transaction);
+										break;
+									}
+								case StorageType.Update:
+									{
+										if (string.IsNullOrWhiteSpace(sqlStatements.UpdateSql))
+										{
+											throw new SpiderException("未能生成更新 SQL");
+										}
 
-									await conn.ExecuteAsync(sqlStatements.UpdateSql, list, transaction);
-									break;
-								}
+										await conn.ExecuteAsync(sqlStatements.UpdateSql, list, transaction);
+										break;
+									}
 								case StorageType.InsertAndUpdate:
-								{
-									await conn.ExecuteAsync(sqlStatements.InsertAndUpdateSql, list, transaction);
-									break;
-								}
+									{
+										await conn.ExecuteAsync(sqlStatements.InsertAndUpdateSql, list, transaction);
+										break;
+									}
 							}
 
 							transaction?.Commit();
@@ -202,21 +202,25 @@ namespace Sop.Spider.DataStorage
 			switch (tableMetadata.Schema.TablePostfix)
 			{
 				case TablePostfix.Monday:
-				{
-					return $"{tableName}_{DateTimeHelper.MondayString}";
-				}
+					{
+						return $"{tableName}_{DateTimeHelper.MondayString}";
+					}
 				case TablePostfix.Month:
-				{
-					return $"{tableName}_{DateTimeHelper.MonthString}";
-				}
+					{
+						return $"{tableName}_{DateTimeHelper.MonthString}";
+					}
 				case TablePostfix.Today:
-				{
-					return $"{tableName}_{DateTimeHelper.TodayString}";
-				}
+					{
+						return $"{tableName}_{DateTimeHelper.TodayString}";
+					}
+				case TablePostfix.DateFormat:
+					{
+						return $"{tableName}_{DateTime.Now.ToString(tableMetadata.Schema.TablePostfixFormat)}";
+					}
 				default:
-				{
-					return tableName;
-				}
+					{
+						return tableName;
+					}
 			}
 		}
 

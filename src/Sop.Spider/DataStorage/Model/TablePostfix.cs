@@ -23,6 +23,11 @@ namespace Sop.Spider.DataStorage
 		/// <summary>
 		/// 表名的后缀为当月 {name}_201712
 		/// </summary>
-		Month
+		Month,
+
+		/// <summary>
+		/// 表名的后缀为自定义设置要求必须
+		/// </summary>
+		DateFormat
 	}
 }

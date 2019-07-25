@@ -71,6 +71,7 @@ namespace Sop.Spider.Download
 				{
 					var httpRequestMessage = GenerateHttpRequestMessage(request);
 
+					#region UseProxy
 					if (UseProxy)
 					{
 						if (HttpProxyPool == null)
@@ -93,12 +94,21 @@ namespace Sop.Spider.Download
 								return response;
 							}
 						}
-					}
+					} 
+					#endregion
 
 					var httpClientEntry = GetHttpClientEntry(proxy == null ? "DEFAULT" : $"{proxy.Address}", proxy);
 
+					try
+					{
+						//TODO 目前异常问题还未处理 后期捕获异常问题再处理
+						httpResponseMessage = await httpClientEntry.HttpClient.SendAsync(httpRequestMessage);
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine(ex.Message);
+					}
 
-					httpResponseMessage = await httpClientEntry.HttpClient.SendAsync(httpRequestMessage);
 
 					httpResponseMessage.EnsureSuccessStatusCode();
 
@@ -355,7 +365,10 @@ namespace Sop.Spider.Download
 				Proxy = proxy,
 				CookieContainer = _cookieContainer
 			};
-			var item = new HttpClientEntry(handler, AllowAutoRedirect) { LastUseTime = DateTime.Now };
+			var item = new HttpClientEntry(handler, AllowAutoRedirect)
+			{
+				LastUseTime = DateTime.Now
+			};
 			item.HttpClient.Timeout = new TimeSpan(0, 0, 0, Timeout);
 			_httpClients.TryAdd(hash, item);
 			return item;

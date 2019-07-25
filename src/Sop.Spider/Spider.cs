@@ -179,13 +179,7 @@ namespace Sop.Spider
 
 				// 定制化的设置
 				Initialize();
-
-
-
-
-
-
-
+				 
 
 				var dataFlowInfo = string.Join(" ==> ", _dataFlows.Select(x => x.Name));
 

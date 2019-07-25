@@ -21,11 +21,11 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
-				await conn.ExecuteAsync("CREATE SCHEMA IF NOT EXISTS Sop.Spider DEFAULT CHARACTER SET utf8mb4;");
+				await conn.ExecuteAsync("CREATE SCHEMA IF NOT EXISTS SopSpider DEFAULT CHARACTER SET utf8mb4;");
 				var sql1 =
-					$"create table if not exists Sop.Spider.downloader_agent(id nvarchar(40) primary key, `name` nvarchar(255) null, processor_count int null, total_memory int null, is_deleted tinyint(1) default 0 null, creation_time timestamp default CURRENT_TIMESTAMP not null, last_modification_time timestamp default CURRENT_TIMESTAMP not null, key NAME_INDEX (`name`));";
+					$"create table if not exists SopSpider.downloader_agent(id nvarchar(40) primary key, `name` nvarchar(255) null, processor_count int null, total_memory int null, is_deleted tinyint(1) default 0 null, creation_time timestamp default CURRENT_TIMESTAMP not null, last_modification_time timestamp default CURRENT_TIMESTAMP not null, key NAME_INDEX (`name`));";
 				var sql2 =
-					$"create table if not exists Sop.Spider.downloader_agent_heartbeat(id bigint AUTO_INCREMENT primary key, agent_id nvarchar(40) not null, `agent_name` nvarchar(255) null, free_memory int null, downloader_count int null, creation_time timestamp default CURRENT_TIMESTAMP not null, key NAME_INDEX (`agent_name`), key ID_INDEX (`agent_id`));";
+					$"create table if not exists SopSpider.downloader_agent_heartbeat(id bigint AUTO_INCREMENT primary key, agent_id nvarchar(40) not null, `agent_name` nvarchar(255) null, free_memory int null, downloader_count int null, creation_time timestamp default CURRENT_TIMESTAMP not null, key NAME_INDEX (`agent_name`), key ID_INDEX (`agent_id`));";
 				await conn.ExecuteAsync(sql1);
 				await conn.ExecuteAsync(sql2);
 			}
@@ -36,7 +36,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
 				return (await conn.QueryAsync<DownloaderAgent>(
-						$"SELECT * FROM Sop.Spider.downloader_agent"))
+						$"SELECT * FROM SopSpider.downloader_agent"))
 					.ToList();
 			}
 		}
@@ -46,7 +46,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
 				await conn.ExecuteAsync(
-					$"INSERT IGNORE INTO Sop.Spider.downloader_agent (id, `name`, processor_count, total_memory, creation_time, last_modification_time) VALUES (@Id, @Name, @ProcessorCount, @TotalMemory, @CreationTime, @LastModificationTime); UPDATE Sop.Spider.downloader_agent SET is_deleted = false WHERE id = @Id",
+					$"INSERT IGNORE INTO SopSpider.downloader_agent (id, `name`, processor_count, total_memory, creation_time, last_modification_time) VALUES (@Id, @Name, @ProcessorCount, @TotalMemory, @CreationTime, @LastModificationTime); UPDATE SopSpider.downloader_agent SET is_deleted = false WHERE id = @Id",
 					agent);
 			}
 		}
@@ -56,7 +56,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
 				var obj = await conn.QueryFirstOrDefaultAsync<dynamic>(
-					$"SELECT id FROM Sop.Spider.downloader_agent WHERE id = @Id && is_deleted = false LIMIT 1;",
+					$"SELECT id FROM SopSpider.downloader_agent WHERE id = @Id && is_deleted = false LIMIT 1;",
 					new
 					{
 						agent.Id
@@ -64,10 +64,10 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 				if (obj != null)
 				{
 					await conn.ExecuteAsync(
-						$"INSERT IGNORE INTO Sop.Spider.downloader_agent_heartbeat (agent_id, agent_name, free_memory, downloader_count, creation_time) VALUES (@AgentId, @AgentName, @FreeMemory, @DownloaderCount, @CreationTime);",
+						$"INSERT IGNORE INTO SopSpider.downloader_agent_heartbeat (agent_id, agent_name, free_memory, downloader_count, creation_time) VALUES (@AgentId, @AgentName, @FreeMemory, @DownloaderCount, @CreationTime);",
 						agent);
 					await conn.ExecuteAsync(
-						$"UPDATE Sop.Spider.downloader_agent SET last_modification_time = @LastModificationTime WHERE id = @AgentId",
+						$"UPDATE SopSpider.downloader_agent SET last_modification_time = @LastModificationTime WHERE id = @AgentId",
 						new {agent.AgentId, LastModificationTime = agent.CreationTime});
 				}
 			}

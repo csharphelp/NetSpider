@@ -54,5 +54,8 @@ namespace Sop.Spider.Analyzer
 		/// 需要排除链接的正则表达式
 		/// </summary>
 		public string[] ExcludePatterns { get; set; }
+
+
+
 	}
 }
