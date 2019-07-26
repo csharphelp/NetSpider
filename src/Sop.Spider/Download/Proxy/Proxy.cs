@@ -8,7 +8,7 @@ namespace Sop.Spider.Download
 	/// </summary>
 	public class Proxy
 	{
-		private double _lastBorrowTime = DateTimeHelper.GetCurrentUnixTimeNumber();
+		private double _lastBorrowTime = DateTimeHelper.GetCurrentUnixMilliseconds();
 
 		/// <summary>
 		/// 实际代理信息
@@ -39,7 +39,7 @@ namespace Sop.Spider.Download
 		{
 			WebProxy = proxy;
 
-			CanReuseTime = DateTimeHelper.GetCurrentUnixTimeNumber() + reuseTimeInterval * 100;
+			CanReuseTime = DateTimeHelper.GetCurrentUnixMilliseconds() + reuseTimeInterval * 100;
 		}
 
 		/// <summary>
@@ -65,8 +65,8 @@ namespace Sop.Spider.Download
 		/// </summary>
 		public void RecordResponse()
 		{
-			ResponseTime = (DateTimeHelper.GetCurrentUnixTimeNumber() - _lastBorrowTime + ResponseTime) / 2;
-			_lastBorrowTime = DateTimeHelper.GetCurrentUnixTimeNumber();
+			ResponseTime = (DateTimeHelper.GetCurrentUnixMilliseconds() - _lastBorrowTime + ResponseTime) / 2;
+			_lastBorrowTime = DateTimeHelper.GetCurrentUnixMilliseconds();
 		}
 
 		/// <summary>
@@ -101,7 +101,7 @@ namespace Sop.Spider.Download
 		/// <param name="reuseTimeInterval">代理不被再次使用的间隔</param>
 		public void SetReuseTime(int reuseTimeInterval)
 		{
-			CanReuseTime = DateTimeHelper.GetCurrentUnixTimeNumber() + reuseTimeInterval * 100;
+			CanReuseTime = DateTimeHelper.GetCurrentUnixMilliseconds() + reuseTimeInterval * 100;
 		}
 	}
 }

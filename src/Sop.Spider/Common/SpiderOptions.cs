@@ -12,12 +12,27 @@ namespace Sop.Spider.Common
 	{
 		private readonly IConfiguration _configuration;
 
+		#region 统计计数类型
+		public const string Success = "Success";
+		public const string Failed = "Failed";
+		public const string Start = "Start";
+		public const string Exit = "Exit";
+		public const string Total = "Total";		
+		public const string DownloadSuccess = "DownloadSuccess";
+		public const string DownloadFailed ="DownloadFailed";
+		public const string Print = "Print";
 
-		//public  string CountType => "statistics";
+		 
+
+		public const string TenantType = "Spider";
+	 
+		#endregion
+
+
 		/// <summary>
 		/// 租户类型
 		/// </summary>
-		public string TenantType => "Spider";
+
 
 		public ConfigurationOptions GetRedisOptions
 		{

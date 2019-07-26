@@ -138,13 +138,20 @@ namespace Sop.Spider.Common
 		/// <summary>
 		/// 获取当前Unix时间
 		/// </summary>
-		/// <returns>Unix时间</returns>
-		public static double GetCurrentUnixTimeNumber()
+		/// <returns>Unix时间</returns>		 
+		public static double GetCurrentUnixMilliseconds()
 		{
 			return DateTime.Now.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc))
 				.TotalMilliseconds;
+		} 
+	 
+		public static DateTime GetCurrentUnixMilliseconds(double timestamp)
+		{
+			DateTime converted = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+			DateTime newDateTime = converted.AddMilliseconds(timestamp);
+			return newDateTime.ToLocalTime();
 		}
 
-		 
+
 	}
 }

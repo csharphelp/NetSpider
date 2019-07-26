@@ -51,7 +51,7 @@ namespace Sop.Spider.EventBus
 				return;
 			}
 
-			message.Timestamp = (long) DateTimeHelper.GetCurrentUnixTimeNumber();
+			message.Timestamp = (long) DateTimeHelper.GetCurrentUnixMilliseconds();
 
 			if (_consumers.TryGetValue(topic, out Action<Event> consumer))
 			{

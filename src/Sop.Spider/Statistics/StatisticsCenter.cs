@@ -66,35 +66,36 @@ namespace Sop.Spider.Statistics
 
 			switch (message.Type)
 			{
-				case "Success":
+				
+				case SpiderOptions.Success:
 					{
 						var ownerId = message.Data;
 						await _statisticsStore.IncrementSuccessAsync(ownerId);
 						break;
 					}
 
-				case "Failed":
+				case SpiderOptions.Failed:
 					{
 						var data = message.Data.Split(',');
 						await _statisticsStore.IncrementFailedAsync(data[0], int.Parse(data[1]));
 						break;
 					}
 
-				case "Start":
+				case SpiderOptions.Start:
 					{
 						var ownerId = message.Data;
 						await _statisticsStore.StartAsync(ownerId);
 						break;
 					}
 
-				case "Exit":
+				case SpiderOptions.Exit:
 					{
 						var ownerId = message.Data;
 						await _statisticsStore.ExitAsync(ownerId);
 						break;
 					}
 
-				case "Total":
+				case SpiderOptions.Total:
 					{
 						var data = message.Data.Split(',');
 						await _statisticsStore.IncrementTotalAsync(data[0], int.Parse(data[1]));
@@ -102,7 +103,7 @@ namespace Sop.Spider.Statistics
 						break;
 					}
 
-				case "DownloadSuccess":
+				case SpiderOptions.DownloadSuccess:
 					{
 						var data = message.Data.Split(',');
 						await _statisticsStore.IncrementDownloadSuccessAsync(data[0], int.Parse(data[1]),
@@ -110,7 +111,7 @@ namespace Sop.Spider.Statistics
 						break;
 					}
 
-				case "DownloadFailed":
+				case SpiderOptions.DownloadFailed:
 					{
 						var data = message.Data.Split(',');
 						await _statisticsStore.IncrementDownloadFailedAsync(data[0], int.Parse(data[1]),
@@ -118,7 +119,7 @@ namespace Sop.Spider.Statistics
 						break;
 					}
 
-				case "Print":
+				case SpiderOptions.Print:
 					{
 						var ownerId = message.Data;
 						var statistics = await _statisticsStore.GetSpiderStatisticsAsync(ownerId);

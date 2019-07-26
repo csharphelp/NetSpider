@@ -160,7 +160,7 @@ namespace Sop.Spider.Statistics
 					$"SELECT * FROM sopspider.download_statistics WHERE agent_id = @AgentId LIMIT 1;",
 					new
 					{
-						AgentId = agentId
+    						AgentId = agentId
 					});
 			}
 		}

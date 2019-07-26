@@ -71,16 +71,18 @@ namespace Sample.samples
 		{
 
 			AddDataFlow(new DataParser<CnblogsEntry>()).AddDataFlow(new MySqlEntityStorage(StorageType.InsertIgnoreDuplicate, "Database='cnblogs';Data Source=127.0.0.1;password=123456;User ID=root;Port=3306;"));
+			#region 注释掉
 			//AddRequests(
 			//	new Request("https://news.cnblogs.com/n/page/5/", new Dictionary<string, string> {{"网站", "博客园"}}),
-			//	new Request("https://news.cnblogs.com/n/page/2/", new Dictionary<string, string> {{"网站", "博客园"}}));
+			//	new Request("https://news.cnblogs.com/n/page/2/", new Dictionary<string, string> {{"网站", "博客园"}})); 
+			#endregion
 
 			AddRequests(
-				new Request("https://news.cnblogs.com/n/page/22/", new Dictionary<string, string> { { "网站key", "博客园value " } })
+				new Request("https://news.cnblogs.com/n/page/44/", new Dictionary<string, string> { { "网站key", "博客园value " } })
 				 );
 		}
 
-		[Schema("cnblogs", "cnblogs_entity_model_12", TablePostfix.Today)]
+		[Schema("cnblogs", "cnblogs_entity_model_5", TablePostfix.Today)]
 		[EntitySelect(Expression = ".//div[@class='news_block']", Type = SelectorType.XPath)]
 		[ValueSelect(Expression = ".//a[@class='current']", Name = "内容key", Type = SelectorType.XPath)]
 		[FollowSelect(XPaths = new[] { "//div[@class='pager']" })]

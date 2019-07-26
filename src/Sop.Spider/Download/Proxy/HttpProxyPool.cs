@@ -48,7 +48,7 @@ namespace Sop.Spider.Download
 					var proxy = GetFirstAvailableProxy();
 					if (proxy != null)
 					{
-						proxy.SetLastBorrowTime(DateTimeHelper.GetCurrentUnixTimeNumber());
+						proxy.SetLastBorrowTime(DateTimeHelper.GetCurrentUnixMilliseconds());
 						_proxyQueue.Remove(proxy);
 						return proxy.GetWebProxy();
 					}
@@ -126,7 +126,7 @@ namespace Sop.Spider.Download
 
 		private Proxy GetFirstAvailableProxy()
 		{
-			var currentUnixTimeNumber = DateTimeHelper.GetCurrentUnixTimeNumber();
+			var currentUnixTimeNumber = DateTimeHelper.GetCurrentUnixMilliseconds();
 			foreach (var proxy in _proxyQueue)
 			{
 				if (currentUnixTimeNumber - proxy.GetLastUseTime() > _reuseInterval)

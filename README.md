@@ -42,7 +42,7 @@ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且�
 ----
 ### 设计架构
 
-![DESIGN IMAGE](https://github.com/dotnetcore/DotnetSpider/blob/master/images/data-info-sys.png?raw=true)
+![DESIGN IMAGE](https://raw.githubusercontent.com/csharphelp/DotnetSpider/master/images/data-info-sys.png)
 
 ### 开发环境
 
