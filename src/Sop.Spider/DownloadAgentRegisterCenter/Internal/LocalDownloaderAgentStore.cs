@@ -9,22 +9,22 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 	/// <summary>
 	/// 本地下载器代理存储
 	/// </summary>
-	internal class LocalDownloaderAgentStore : IDownloaderAgentStore
+	internal class LocalDownloadAgentStore : IDownloadAgentStore
 	{
-		private readonly ConcurrentDictionary<string, DownloaderAgent> _agents =
-			new ConcurrentDictionary<string, DownloaderAgent>();
+		private readonly ConcurrentDictionary<string, Entity.DownloadAgent> _agents =
+			new ConcurrentDictionary<string, Entity.DownloadAgent>();
 
 		public Task EnsureDatabaseAndTableCreatedAsync()
 		{
 			return Task.CompletedTask;
 		}
 
-		public Task<IEnumerable<DownloaderAgent>> GetAllListAsync()
+		public Task<IEnumerable<Entity.DownloadAgent>> GetAllListAsync()
 		{
-			return Task.FromResult((IEnumerable<DownloaderAgent>) _agents.Values);
+			return Task.FromResult((IEnumerable<Entity.DownloadAgent>)_agents.Values);
 		}
 
-		public Task RegisterAsync(DownloaderAgent agent)
+		public Task RegisterAsync(Entity.DownloadAgent agent)
 		{
 			_agents.AddOrUpdate(agent.Id, x => agent, (s, a) =>
 			{
@@ -40,7 +40,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 		/// </summary>
 		/// <param name="heartbeat"></param>
 		/// <returns></returns>
-		public Task HeartbeatAsync(DownloaderAgentHeartbeat heartbeat)
+		public Task HeartbeatAsync(DownloadAgentHeartbeat heartbeat)
 		{
 			if (_agents.TryGetValue(heartbeat.AgentId, out var agent))
 			{

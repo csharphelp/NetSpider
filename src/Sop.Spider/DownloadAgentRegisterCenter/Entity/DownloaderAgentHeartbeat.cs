@@ -7,7 +7,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Entity
 	/// 下载器代理心跳
 	/// </summary>
 	[Table("downloader_agent_heartbeat")]
-    public class DownloaderAgentHeartbeat
+    public class DownloadAgentHeartbeat
     {
 	    [Column("id")]
 	    public int Id { get; set; }
@@ -34,7 +34,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Entity
 	    /// 已经分配的下载器数量
 	    /// </summary>
 	    [Column("downloader_count")]
-        public int DownloaderCount { get; set; }
+        public int DownloadCount { get; set; }
 
 	    /// <summary>
 	    /// 上报时间

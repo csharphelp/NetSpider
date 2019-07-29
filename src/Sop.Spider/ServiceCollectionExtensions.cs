@@ -53,14 +53,14 @@ namespace Sop.Spider
 		/// <returns></returns>
 		public static IServiceCollection AddLocalDownloadCenter(this IServiceCollection services)
 		{
-			services.AddDownloadCenter(x => x.UseLocalDownloadedAgentStore());
+			services.AddDownloadCenter(x => x.UseLocalDownloadAgentStore());
 			return services;
 		}
 
-		public static DownloadAgentRegisterCenterBuilder UseMySqlDownloaderAgentStore(
+		public static DownloadAgentRegisterCenterBuilder UseMySqlDownloadAgentStore(
 			this DownloadAgentRegisterCenterBuilder builder)
 		{
-			builder.Services.AddSingleton<IDownloaderAgentStore, MySqlDownloaderAgentStore>();
+			builder.Services.AddSingleton<IDownloadAgentStore, MySqlDownloadAgentStore>();
 			return builder;
 		}
 		/// <summary>
@@ -68,11 +68,11 @@ namespace Sop.Spider
 		/// </summary>
 		/// <param name="builder"></param>
 		/// <returns></returns>
-		public static DownloadAgentRegisterCenterBuilder UseLocalDownloadedAgentStore(
+		public static DownloadAgentRegisterCenterBuilder UseLocalDownloadAgentStore(
 			this DownloadAgentRegisterCenterBuilder builder)
 		{
 			Check.NotNull(builder, nameof(builder));
-			builder.Services.AddSingleton<IDownloaderAgentStore, LocalDownloaderAgentStore>();
+			builder.Services.AddSingleton<IDownloadAgentStore, LocalDownloadAgentStore>();
 			return builder;
 		}
 
@@ -92,22 +92,22 @@ namespace Sop.Spider
 
 		#endregion
 
-		#region DownloaderAgent
+		#region DownloadAgent
 		/// <summary>
 		/// 注入事件下载代理器
 		/// </summary>
 		/// <param name="services">注入服务</param>
 		/// <param name="configure">相关配置委托事件</param>
 		/// <returns></returns>
-		public static IServiceCollection AddDownloaderAgent(this IServiceCollection services,
-			Action<DownloaderAgentBuilder> configure = null)
+		public static IServiceCollection AddDownloadAgent(this IServiceCollection services,
+			Action<DownloadAgentBuilder> configure = null)
 		{
 			
-			services.AddSingleton<IHostedService, DefaultDownloaderAgent>();
+			services.AddSingleton<IHostedService, DefaultDownloadAgent>();
 			//services.AddSingleton<NetworkCenter>();
-			services.AddSingleton<DownloaderAgentOptions>();
+			services.AddSingleton<DownloadAgentOptions>();
 
-			DownloaderAgentBuilder spiderAgentBuilder = new DownloaderAgentBuilder(services);
+			DownloadAgentBuilder spiderAgentBuilder = new DownloadAgentBuilder(services);
 			configure?.Invoke(spiderAgentBuilder);
 
 			return services;
@@ -117,7 +117,7 @@ namespace Sop.Spider
 		/// </summary>
 		/// <param name="builder"></param>
 		/// <returns></returns>
-		public static DownloaderAgentBuilder UseFileLocker(this DownloaderAgentBuilder builder)
+		public static DownloadAgentBuilder UseFileLocker(this DownloadAgentBuilder builder)
 		{
 			Check.NotNull(builder, nameof(builder));
 
@@ -130,7 +130,7 @@ namespace Sop.Spider
 		/// </summary>
 		/// <param name="builder"></param>
 		/// <returns></returns>
-		public static DownloaderAgentBuilder UseDefaultInternetDetector(this DownloaderAgentBuilder builder)
+		public static DownloadAgentBuilder UseDefaultInternetDetector(this DownloadAgentBuilder builder)
 		{
 			Check.NotNull(builder, nameof(builder));
 

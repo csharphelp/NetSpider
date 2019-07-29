@@ -8,7 +8,7 @@ namespace Sop.Spider.Download
 	/// <summary>
 	/// 下载器配置
 	/// </summary>
-	public class DownloaderSettings
+	public class DownloadSettings
 	{
 		/// <summary>
 		/// Cookies
@@ -58,7 +58,7 @@ namespace Sop.Spider.Download
 		/// <summary>
 		/// 所需分配的下载器字数
 		/// </summary>
-		public int DownloaderCount { get; set; } = 1;
+		public int DownloadCount { get; set; } = 1;
 
 		/// <summary>
 		/// Add one cookie to downloader

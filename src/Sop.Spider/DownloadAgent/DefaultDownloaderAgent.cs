@@ -9,12 +9,12 @@ namespace Sop.Spider.DownloadAgent
 	/// <summary>
 	/// 默认下载器代理
 	/// </summary>
-	public class DefaultDownloaderAgent : DownloadedAgentBase
+	public class DefaultDownloadAgent : DownloadAgentBase
 	{
 	
 
-		public DefaultDownloaderAgent(DownloaderAgentOptions options,
-			SpiderOptions spiderOptions, IEventBus eventBus, ILogger<DefaultDownloaderAgent> logger) : base(options, spiderOptions, eventBus, logger)
+		public DefaultDownloadAgent(DownloadAgentOptions options,
+			SpiderOptions spiderOptions, IEventBus eventBus, ILogger<DefaultDownloadAgent> logger) : base(options, spiderOptions, eventBus, logger)
 		{
 		}
 

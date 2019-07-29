@@ -10,18 +10,18 @@ namespace Sop.Spider.Analyzer
 	public class RegexReplaceFormatAttribute : FormatBaseAttribute
 	{
 		/// <summary>
-		/// 正则类型
-		/// </summary>
-		public RegexType RegexType { get; set; } = RegexType.Customize;
-		/// <summary>
 		/// 表达式
 		/// </summary>
 		public string Expression { get; set; }
+		/// <summary>
+		/// 忽略比较
+		/// </summary>
+		public RegexOptions RegexOptions { get; set; } = RegexOptions.None;
 
 		/// <summary>
 		/// 要替换的新值
 		/// </summary>
-		public string NewValue { get; set; }
+		public string NewValue { get; set; } = "";
 
 
 
@@ -36,7 +36,8 @@ namespace Sop.Spider.Analyzer
 			{
 				NewValue = "";
 			}
-			return Regex.Replace(value, Expression, NewValue);
+			value = Regex.Replace(value, Expression, NewValue, RegexOptions);
+			return value;
 		}
 
 		/// <summary>
@@ -44,11 +45,11 @@ namespace Sop.Spider.Analyzer
 		/// </summary>
 		protected override void CheckArguments()
 		{
-			if (RegexType.Customize == RegexType && string.IsNullOrWhiteSpace(Expression))
+			if (string.IsNullOrWhiteSpace(Expression))
 			{
 				throw new SpiderArgumentException("RegexReplaceFormatAttribute ");
 			}
-			 
+
 		}
 	}
 }

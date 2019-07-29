@@ -19,10 +19,10 @@ namespace Sop.Spider.DownloadAgent
 	/// <summary>
 	/// 下载器代理基类
 	/// </summary>
-	public abstract class DownloadedAgentBase : BackgroundService, IDownloaderAgent
+	public abstract class DownloadAgentBase : BackgroundService, IDownloadAgent
 	{
 		private readonly IEventBus _eventBus;
-		private readonly DownloaderAgentOptions _options;
+		private readonly DownloadAgentOptions _options;
 		private readonly SpiderOptions _spiderOptions;
 		private bool _exit;
 
@@ -37,7 +37,7 @@ namespace Sop.Spider.DownloadAgent
 		/// <summary>
 		/// 配置下载器
 		/// </summary>
-		protected Action<IDownloaded> ConfigureDownloader { get; set; }
+		protected Action<IDownloaded> ConfigureDownload { get; set; }
 
 		public bool IsRunning { get; private set; }
  
@@ -50,8 +50,8 @@ namespace Sop.Spider.DownloadAgent
 		/// <param name="eventBus">消息队列</param>
  
 		/// <param name="logger">日志接口</param>
-		protected DownloadedAgentBase(
-			DownloaderAgentOptions options,
+		protected DownloadAgentBase(
+			DownloadAgentOptions options,
 			SpiderOptions spiderOptions,
 			IEventBus eventBus,		
 			ILogger logger)
@@ -71,7 +71,7 @@ namespace Sop.Spider.DownloadAgent
 			await _eventBus.PublishAsync(_spiderOptions.DownloadedAgentRegisterCenterTopic, new Event
 			{
 				Type = Framework.RegisterCommand,
-				Data = JsonConvert.SerializeObject(new DownloaderAgent
+				Data = JsonConvert.SerializeObject(new DownloadAgentRegisterCenter.Entity.DownloadAgent
 				{
 					Id = _options.AgentId,
 					Name = _options.Name,
@@ -88,7 +88,7 @@ namespace Sop.Spider.DownloadAgent
 			// 开始心跳
 			HeartbeatAsync(stoppingToken).ConfigureAwait(false).GetAwaiter();
 
-			ReleaseDownloaderAsync(stoppingToken).ConfigureAwait(false).GetAwaiter();
+			ReleaseDownloadAsync(stoppingToken).ConfigureAwait(false).GetAwaiter();
 
 			Logger?.LogInformation($"下载器代理 {_options.AgentId} 启动完毕");
 
@@ -155,12 +155,12 @@ namespace Sop.Spider.DownloadAgent
 					Thread.Sleep(5000);
 					try
 					{
-						var json = JsonConvert.SerializeObject(new DownloaderAgentHeartbeat
+						var json = JsonConvert.SerializeObject(new DownloadAgentHeartbeat
 						{
 							AgentId = _options.AgentId,
 							AgentName = _options.Name,
 							FreeMemory = (int) Framework.GetFreeMemory(),
-							DownloaderCount = _cache.Count,
+							DownloadCount = _cache.Count,
 							CreationTime = DateTime.Now
 						});
 
@@ -180,7 +180,7 @@ namespace Sop.Spider.DownloadAgent
 			}, stoppingToken);
 		}
 
-		private Task ReleaseDownloaderAsync(CancellationToken stoppingToken)
+		private Task ReleaseDownloadAsync(CancellationToken stoppingToken)
 		{
 			return Task.Factory.StartNew(() =>
 			{
@@ -344,7 +344,7 @@ namespace Sop.Spider.DownloadAgent
 			if (!_cache.ContainsKey(request.OwnerId))
 			{
 				IDownloaded downloader = null;
-				switch (request.DownloaderType)
+				switch (request.DownloadType)
 				{
 					
 					case DownloadedType.Test:

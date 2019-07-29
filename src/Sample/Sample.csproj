@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="samples\BaseUsage.cs" />
     <Compile Remove="samples\CnblogsSpider.cs" />
     <Compile Remove="samples\DatabaseSpider.cs" />
     <Compile Remove="samples\DistributedSpider.cs" />

@@ -120,7 +120,7 @@ namespace Sop.Spider.Analyzer
 				DownloadPolicy = current.DownloadPolicy,
 				Depth = current.Depth,
 				DecodeHtml = current.DecodeHtml,
-				DownloaderType = current.DownloaderType,
+				DownloadType = current.DownloadType,
 				Encoding = current.Encoding,
 				Headers = current.Headers,
 				Method = current.Method,

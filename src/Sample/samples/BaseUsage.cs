@@ -1,3 +1,10 @@
+using Microsoft.Extensions.Configuration;
+using Serilog;
+using Sop.Spider;
+using Sop.Spider.Analyzer;
+using Sop.Spider.DataStorage;
+using Sop.Spider.Download;
+using Sop.Spider.EventBus;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,12 +20,12 @@ namespace Sample.samples
 				.ConfigureAppConfiguration(x => x.AddJsonFile("appsettings.json"))
 				.ConfigureServices(services =>
 				{
-					services.AddKafkaEventBus();
-					services.AddDownloadCenter(x => x.UseLocalDownloaderAgentStore());
-					services.AddDownloaderAgent(x =>
+					//services.AddKafkaEventBus();
+					services.AddLocalEventBus();
+					services.AddDownloadCenter(x => x.UseLocalDownloadAgentStore());
+					services.AddDownloadAgent(x =>
 					{
 						x.UseFileLocker();
-						x.UseDefaultAdslRedialer();
 						x.UseDefaultInternetDetector();
 					});
 					services.AddStatisticsCenter(x => x.UseMemory());
@@ -38,7 +45,6 @@ namespace Sample.samples
 			Console.Read();
 			
 			var spider = provider.Create<Sop.Spider.Spider>();
-			spider.NewGuidId(); // 设置任务标识
 			spider.Name = "博客园全站采集"; // 设置任务名称
 			spider.Speed = 10; // 设置采集速度, 表示每秒下载多少个请求, 大于 1 时越大速度越快, 小于 1 时越小越慢, 不能为0.
 			spider.Depth = 3; // 设置采集深度

@@ -6,7 +6,7 @@ namespace Sop.Spider.DownloadAgent
 	/// <summary>
 	/// 下载器代理选项
 	/// </summary>
-	public class DownloaderAgentOptions
+	public class DownloadAgentOptions
 	{
 		private readonly IConfiguration _configuration;
 		private readonly string _defaultAgentId = Guid.NewGuid().ToString("N");
@@ -15,7 +15,7 @@ namespace Sop.Spider.DownloadAgent
 		/// 构造方法
 		/// </summary>
 		/// <param name="configuration">配置接口</param>
-		public DownloaderAgentOptions(IConfiguration configuration)
+		public DownloadAgentOptions(IConfiguration configuration)
 		{
 			_configuration = configuration;
 		}

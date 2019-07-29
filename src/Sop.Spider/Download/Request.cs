@@ -34,7 +34,7 @@ namespace Sop.Spider.Download
 		/// <summary>
 		/// 下载器类别
 		/// </summary>
-		public DownloadedType DownloaderType { get; set; } = DownloadedType.HttpClient;
+		public DownloadedType DownloadType { get; set; } = DownloadedType.HttpClient;
 
 		/// <summary>
 		/// 下载内容是否需要解码

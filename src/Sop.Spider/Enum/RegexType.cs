@@ -6,7 +6,7 @@ namespace Sop.Spider
     public enum RegexType
 	{
 		/// <summary>
-		/// Firefox
+		/// Customize
 		/// </summary>
 		Customize,
        

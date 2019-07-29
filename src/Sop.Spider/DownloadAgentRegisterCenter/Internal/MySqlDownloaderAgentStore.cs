@@ -8,11 +8,11 @@ using MySql.Data.MySqlClient;
 
 namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 {
-	public class MySqlDownloaderAgentStore : IDownloaderAgentStore
+	public class MySqlDownloadAgentStore : IDownloadAgentStore
 	{
 		private readonly SpiderOptions _options;
 
-		public MySqlDownloaderAgentStore(SpiderOptions options)
+		public MySqlDownloadAgentStore(SpiderOptions options)
 		{
 			_options = options;
 		}
@@ -31,17 +31,17 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 			}
 		}
 
-		public async Task<IEnumerable<DownloaderAgent>> GetAllListAsync()
+		public async Task<IEnumerable<Entity.DownloadAgent>> GetAllListAsync()
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
-				return (await conn.QueryAsync<DownloaderAgent>(
+				return (await conn.QueryAsync<Entity.DownloadAgent>(
 						$"SELECT * FROM SopSpider.downloader_agent"))
 					.ToList();
 			}
 		}
 
-		public async Task RegisterAsync(DownloaderAgent agent)
+		public async Task RegisterAsync(Entity.DownloadAgent agent)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
@@ -51,7 +51,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
 			}
 		}
 
-		public async Task HeartbeatAsync(DownloaderAgentHeartbeat agent)
+		public async Task HeartbeatAsync(DownloadAgentHeartbeat agent)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{

@@ -54,7 +54,7 @@ namespace Sop.Spider
 			if (!_isRunning)
 			{
 				_serviceProvider.GetService<IDownloadAgentRegisterCenter>()?.StartAsync(default).ConfigureAwait(false).GetAwaiter();
-				_serviceProvider.GetService<IDownloaderAgent>()?.StartAsync(default).ConfigureAwait(false).GetAwaiter();
+				_serviceProvider.GetService<IDownloadAgent>()?.StartAsync(default).ConfigureAwait(false).GetAwaiter();
 				_serviceProvider.GetService<IStatisticsCenter>()?.StartAsync(default).ConfigureAwait(false).GetAwaiter();
 				_isRunning = true;
 			}

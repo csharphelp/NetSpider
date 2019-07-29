@@ -9,7 +9,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter.Entity
 	/// 下载器代理
 	/// </summary>
 	[Table("downloader_agent")]
-	public class DownloaderAgent
+	public class DownloadAgent
 	{
 		/// <summary>
 		/// 标识

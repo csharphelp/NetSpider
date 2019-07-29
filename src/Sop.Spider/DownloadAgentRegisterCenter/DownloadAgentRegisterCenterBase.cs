@@ -33,7 +33,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter
 		/// <summary>
 		/// 下载器代理存储
 		/// </summary>
-		protected readonly IDownloaderAgentStore DownloaderAgentStore;
+		protected readonly IDownloadAgentStore DownloadAgentStore;
 		/// <summary>
 		/// 是否运行中
 		/// </summary>
@@ -48,12 +48,12 @@ namespace Sop.Spider.DownloadAgentRegisterCenter
 		/// <param name="logger">日志接口</param>
 		protected DownloadAgentRegisterCenterBase(
 			IEventBus eventBus,
-			IDownloaderAgentStore downloaderAgentStore,
+			IDownloadAgentStore downloaderAgentStore,
 			SpiderOptions options,
 			ILogger logger)
 		{
 			EventBus = eventBus;
-			DownloaderAgentStore = downloaderAgentStore;
+			DownloadAgentStore = downloaderAgentStore;
 			Logger = logger;
 			Options = options;
 		}
@@ -66,7 +66,7 @@ namespace Sop.Spider.DownloadAgentRegisterCenter
 		{
 			try
 			{
-				await DownloaderAgentStore.EnsureDatabaseAndTableCreatedAsync();
+				await DownloadAgentStore.EnsureDatabaseAndTableCreatedAsync();
 			}
 			catch (Exception e)
 			{
@@ -92,11 +92,11 @@ namespace Sop.Spider.DownloadAgentRegisterCenter
 					case Framework.RegisterCommand:
 						{
 							// 此处不考虑消息的超时，一是因为节点数量不会很多，二是因为超时的可以释放掉
-							var agent = JsonConvert.DeserializeObject<DownloaderAgent>(message.Data);
+							var agent = JsonConvert.DeserializeObject<Entity.DownloadAgent>(message.Data);
 							if (agent != null)
 							{
 								//添加异步代理下载器
-								await DownloaderAgentStore.RegisterAsync(agent);
+								await DownloadAgentStore.RegisterAsync(agent);
 								Logger.LogInformation($"注册下载代理器 {agent.Id} 成功");
 							}
 							else
@@ -109,12 +109,12 @@ namespace Sop.Spider.DownloadAgentRegisterCenter
 
 					case Framework.HeartbeatCommand:
 						{
-							var heartbeat = JsonConvert.DeserializeObject<DownloaderAgentHeartbeat>(message.Data);
+							var heartbeat = JsonConvert.DeserializeObject<DownloadAgentHeartbeat>(message.Data);
 							if (heartbeat != null)
 							{
 								if ((DateTime.Now - heartbeat.CreationTime).TotalSeconds < Options.MessageExpiredTime)
 								{
-									await DownloaderAgentStore.HeartbeatAsync(heartbeat);
+									await DownloadAgentStore.HeartbeatAsync(heartbeat);
 									Logger.LogDebug($"下载器代理 {heartbeat.AgentId} 更新心跳成功");
 								}
 								else

@@ -18,19 +18,12 @@ namespace Sample.samples
 {
 	/// <summary>
 	/// 实体信息采集器
+	/// 1、
 	/// </summary>
 	public class CnblogsNewsSpider : Spider
 	{
-		/*
-		 * 0 此类爬虫存储抓取网页存储数据库
-		 * 1 Depth 有什么影响 
-		 *  2 Speed 有什么作用 
-		 *  3 FollowSelectAttribute 
-	    */
-
-
 		/// <summary>
-		/// 
+		/// 构造函数
 		/// </summary>
 		/// <param name="mq"></param>
 		/// <param name="statisticsService"></param>
@@ -42,7 +35,7 @@ namespace Sample.samples
 		{
 		}
 		/// <summary>
-		/// 
+		/// 运行爬虫
 		/// </summary>
 		/// <returns></returns>
 		public static Task Run()
@@ -54,7 +47,7 @@ namespace Sample.samples
 				{
 					services.AddLocalEventBus();
 					services.AddLocalDownloadCenter();
-					services.AddDownloaderAgent(x =>
+					services.AddDownloadAgent(x =>
 					{
 						x.UseFileLocker();
 						x.UseDefaultInternetDetector();
@@ -65,8 +58,6 @@ namespace Sample.samples
 			var spider = provider.Create<CnblogsNewsSpider>();
 			return spider.RunAsync();
 		}
-
-
 		protected override void Initialize()
 		{
 
@@ -117,9 +108,9 @@ namespace Sample.samples
 			[TrimFormat(Type = TrimType.RightLeft)]
 			public string WebSite { get; set; }
 
-
-
-
+			/// <summary>
+			/// 抓去标题（先调用选择器，在调用格式发处理器）
+			/// </summary>
 			[StringLength(200)]
 			[ValueSelect(Expression = "//title")]
 			[ReplaceFormat(NewValue = "", OldValue = " - 博客园")]
@@ -140,29 +131,24 @@ namespace Sample.samples
 			[DownloadFormat()]
 			public string ImgUrl { get; set; }
 
-
-
-
 			[ValueSelect(Expression = ".//div[@class='entry_footer']", ValueOption = ValueOption.OuterHtml)]
 			public string FooterHtml { get; set; }
-
-
-
-
 
 			[ValueSelect(Expression = ".//div[@class='entry_footer']/span[@class='comment']",
 				ValueOption = ValueOption.InnerText)]
 			public string Comment { get; set; }
 
-
-
-
 			[ValueSelect(Expression = ".//div[@class='entry_footer']/span[@class='view']", ValueOption = ValueOption.InnerText)]
-			[RegexReplaceFormat(Expression = @"^[1 - 9]\d *$")]
 			public string View { get; set; }
 
+			[ValueSelect(Expression = ".//div[@class='entry_footer']/span[@class='view']", ValueOption = ValueOption.InnerText)]
+			[RegexReplaceFormat(Expression = @"[^0-9]")]
+			public string ViewCount { get; set; }
 
-			[ValueSelect(Expression = ".//div[@class='entry_summary']", ValueOption = ValueOption.InnerText)]
+
+
+			[ValueSelect(Expression = ".//div[@class='entry_summary']", ValueOption = ValueOption.OuterHtml)]
+			[RegexReplaceFormat(Expression = @"[^\u4E00-\u9FA5]")]
 			public string PlainText { get; set; }
 
 			[ValueSelect(Expression = "DATETIME", Type = SelectorType.Enviroment)]

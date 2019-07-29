@@ -9,7 +9,7 @@ namespace Sop.Spider.DownloadAgent
 	/// <summary>
 	/// 本地下器代理
 	/// </summary>
-	public class LocalDownloadedAgent : DefaultDownloaderAgent
+	public class LocalDownloadedAgent : DefaultDownloadAgent
 	{
 	 
 		/// <summary>
@@ -19,12 +19,12 @@ namespace Sop.Spider.DownloadAgent
 		/// <param name="spiderOptions"></param>
 		/// <param name="eventBus">消息队列</param>
 		/// <param name="logger">日志接口</param>
-		public LocalDownloadedAgent(DownloaderAgentOptions options, SpiderOptions spiderOptions,
+		public LocalDownloadedAgent(DownloadAgentOptions options, SpiderOptions spiderOptions,
 			IEventBus eventBus,
 			ILogger<LocalDownloadedAgent> logger) : base(options, spiderOptions,
 			eventBus, logger)
 		{
-			// ConfigureDownloader = downloader => downloader.Logger = null;
+			// ConfigureDownload = download => download.Logger = null;
 		}
 	}
 }
