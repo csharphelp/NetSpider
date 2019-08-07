@@ -33,7 +33,7 @@ namespace Sop.Spider.DataStorage
 		/// <returns></returns>
 		public static SqlServerEntityStorage CreateFromOptions(SpiderOptions options)
 		{
-			var storage = new SqlServerEntityStorage(options.StorageType, options.StorageConnectionString)
+			var storage = new SqlServerEntityStorage(options.StorageType, options.ConnectionString)
 			{
 				IgnoreCase = options.StorageIgnoreCase,
 				RetryTimes = options.StorageRetryTimes,

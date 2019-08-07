@@ -26,7 +26,7 @@ namespace Sop.Spider.DataStorage
 		/// <returns></returns>
 		public static MongoEntityStorage CreateFromOptions(SpiderOptions options)
 		{
-			return new MongoEntityStorage(options.StorageConnectionString);
+			return new MongoEntityStorage(options.ConnectionString);
 		}
 
 		/// <summary>

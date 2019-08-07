@@ -21,7 +21,7 @@ namespace Sop.Spider.DataStorage
 		/// <returns></returns>
 		public static MySqlEntityStorage CreateFromOptions(SpiderOptions options)
 		{
-			var storage = new MySqlEntityStorage(options.StorageType, options.StorageConnectionString)
+			var storage = new MySqlEntityStorage(options.StorageType, options.ConnectionString)
 			{
 				IgnoreCase = options.StorageIgnoreCase,
 				RetryTimes = options.StorageRetryTimes,

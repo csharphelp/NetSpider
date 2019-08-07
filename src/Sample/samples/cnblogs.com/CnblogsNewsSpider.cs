@@ -18,7 +18,7 @@ namespace Sample.samples
 {
 	/// <summary>
 	/// 实体信息采集器
-	/// 1、
+	/// 1、https://news.cnblogs.com/n/page/1/
 	/// </summary>
 	public class CnblogsNewsSpider : Spider
 	{
@@ -52,7 +52,7 @@ namespace Sample.samples
 						x.UseFileLocker();
 						x.UseDefaultInternetDetector();
 					});
-					services.AddStatisticsCenter(x => x.UseRedis());
+					services.AddStatisticsCenter(x => x.UseMemory());
 				}).Register<CnblogsNewsSpider>();
 			var provider = builder.Build();
 			var spider = provider.Create<CnblogsNewsSpider>();
@@ -61,7 +61,8 @@ namespace Sample.samples
 		protected override void Initialize()
 		{
 
-			AddDataFlow(new DataParser<CnblogsEntry>()).AddDataFlow(new MySqlEntityStorage(StorageType.InsertIgnoreDuplicate, "Database='cnblogs';Data Source=127.0.0.1;password=123456;User ID=root;Port=3306;"));
+			AddDataFlow(new DataParser<CnblogsEntry>())
+				.AddDataFlow(new MySqlEntityStorage(StorageType.InsertIgnoreDuplicate, SpiderOptions.ConnectionString1));
 			#region 注释掉
 			//AddRequests(
 			//	new Request("https://news.cnblogs.com/n/page/5/", new Dictionary<string, string> {{"网站", "博客园"}}),
@@ -73,10 +74,10 @@ namespace Sample.samples
 				 );
 		}
 
-		[Schema("cnblogs", "cnblogs_entity_model_5", TablePostfix.Today)]
+		[Schema("SpiderStorage", "cnblogs_news_1")]
 		[EntitySelect(Expression = ".//div[@class='news_block']", Type = SelectorType.XPath)]
 		[ValueSelect(Expression = ".//a[@class='current']", Name = "内容key", Type = SelectorType.XPath)]
-		[FollowSelect(XPaths = new[] { "//div[@class='pager']" })]
+		//[FollowSelect(XPaths = new[] { "//div[@class='pager']" })]
 		public class CnblogsEntry : EntityBase<CnblogsEntry>
 		{
 			protected override void Configure()

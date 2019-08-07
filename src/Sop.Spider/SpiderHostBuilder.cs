@@ -48,6 +48,8 @@ namespace Sop.Spider
 			return this;
 		}
 
+
+
 		public SpiderHostBuilder ConfigureLogging(Action<ILoggingBuilder> configureLogging)
 		{
 			_services.AddLogging(configureLogging);

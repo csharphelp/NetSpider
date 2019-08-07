@@ -28,10 +28,11 @@ namespace Sop.Spider
         /// </summary>
         Css,
 
-        /// <summary>
-        /// JsonPath
-        /// </summary>
-        JsonPath,
+		/// <summary>
+		/// JsonPath
+		/// 详细参考：https://blog.csdn.net/fwk19840301/article/details/80452258
+		/// </summary>
+		JsonPath,
 
         /// <summary>
         /// Enviroment

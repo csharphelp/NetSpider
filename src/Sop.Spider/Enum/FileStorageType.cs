@@ -3,7 +3,7 @@ namespace Sop.Spider
 	/// <summary>
 	/// 浏览器类型
 	/// </summary>
-	public enum DownloadFileStorageType
+	public enum FileStorageType
 	{
 		/// <summary>
 		/// 本地路径（）

@@ -65,8 +65,8 @@ namespace Sop.Spider.Analyzer
                 takeFromHead = entitySelector.TakeFromHead;
                 selector = new SelectAttribute { Expression = entitySelector.Expression, Type = entitySelector.Type};
             }
-
-            var followSelectors = type.GetCustomAttributes(typeof(FollowSelectAttribute), true).Select(x => (FollowSelectAttribute) x)
+           
+			var followSelectors = type.GetCustomAttributes(typeof(FollowSelectAttribute), true).Select(x => (FollowSelectAttribute) x)
                 .ToList();
 
             var sharedValueSelectors = type.GetCustomAttributes(typeof(ValueSelectAttribute), true)

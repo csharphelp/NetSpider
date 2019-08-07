@@ -2,7 +2,9 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace Sop.Spider.Analyzer
 {
@@ -19,9 +21,18 @@ namespace Sop.Spider.Analyzer
 		public DownloadFile DownloadFile { get; set; } = DownloadFile.SortDownLoad;
 
 		/// <summary>
+		/// 
+		/// </summary>
+		public string FileExtension { get; set; } = ".png";
+
+		public string SavePath { get; set; } = null;
+		public string FileName { get; set; } = null;
+
+
+		/// <summary>
 		/// 存储路径位置
 		/// </summary>
-		public DownloadFileStorageType DownloadFileStorageType { get; set; }
+		public FileStorageType FileStorageType { get; set; } = FileStorageType.InternetPath;
 
 		/// <summary>
 		/// 执行下载操作
@@ -34,60 +45,85 @@ namespace Sop.Spider.Analyzer
 			{
 				return value;
 			}
+			//判断URL地址
+			bool run = false;
+			do
+			{
+				string expression = @"^(https?|ftp|file|ws)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?$";
+				Regex reg = new Regex(expression);
+				if (!reg.IsMatch(value))
+				{
+					//处理url
+					if (value.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
+					{
+						value = "http:" + value;
+						run = true;
+					}
+				}
+				if (reg.IsMatch(value))
+				{
+					run = false;
+				}
 
-			string tempValue = value;
-			string tempFileName = Path.GetFileName(value) ?? Guid.NewGuid().ToString("N") + ".txt";
+			} while (run);
 
-			string tmpPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Download");
-			string fileNamePath = Path.Combine(tmpPath, tempFileName);
 
-			//TODO 文件删除可以存在没有权限等异常问题
+			//文件存储位置
+			if (string.IsNullOrEmpty(SavePath))
+			{
+				SavePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Download", DateTime.Now.Year.ToString(), DateTime.Now.DayOfYear.ToString());
+			}
+			//文件名称			 
+			if (string.IsNullOrEmpty(FileName))
+			{
+				FileName = Guid.NewGuid().ToString("N") + FileExtension;
+			}
+			var tempFileName = Path.Combine(SavePath, FileName);
+			#region TODO 文件删除可以存在没有权限等异常问题
 			try
 			{
-				if (!Directory.Exists(tmpPath))
-					Directory.CreateDirectory(tmpPath);
-
-				//todo 异常暂时不处理，存在删除文件的权限
-				if (File.Exists(fileNamePath))
-					fileNamePath = Path.Combine(tmpPath, Guid.NewGuid().ToString("N") + Path.GetExtension(tempFileName));
+				if (!Directory.Exists(SavePath))
+					Directory.CreateDirectory(SavePath);
+				if (File.Exists(tempFileName))
+					File.Delete(tempFileName);
 			}
 			catch (Exception ex)
 			{
 				Logger?.LogError($"Analyzer.Format.Download {ex.Message}");
 			}
+			#endregion
+
 #if DEBUG
 			Logger?.LogInformation(" Analyzer.Format.Download  开始格式化处理");
 #endif
 
-			switch (DownloadFileStorageType)
+
+
+			string tempStorage = value;
+			switch (FileStorageType)
 			{
-				case DownloadFileStorageType.LocalFilePath:
-					{
-						//文件存储 todo 这里测试了图片下载
-						DownFile(value, fileNamePath);
-						tempValue = fileNamePath;
-					}
+				case FileStorageType.LocalFilePath:
+					DownFile(value, tempFileName);
+					tempStorage = tempFileName;
 					break;
-				case DownloadFileStorageType.LocalFileName:
-					{
-						tempValue = tempFileName;
-					}
+				case FileStorageType.LocalFileName:
+					tempStorage = FileName;
 					break;
-				case DownloadFileStorageType.InternetPath:
-				default:
-
-
+				case FileStorageType.InternetPath:
+					tempStorage = value;
 					break;
 			}
-			return tempValue;
+
+			return tempStorage;
 		}
 		/// <summary>
 		/// 下载文件
 		/// </summary>
 		/// <param name="fileUrl"></param>
 		/// <param name="fileNamePath"></param>
-		private void DownFile(string fileUrl, string fileNamePath)
+		private Task<bool> DownFile(string fileUrl, string fileNamePath)
 		{
+			bool fileExist = false;
 			try
 			{
 				try
@@ -110,6 +146,7 @@ namespace Sop.Spider.Analyzer
 										fileStream.Write(bArr, 0, size);
 										size = responseStream.Read(bArr, 0, (int)bArr.Length);
 									}
+									fileExist = File.Exists(fileNamePath);
 								}
 							}
 						}
@@ -127,6 +164,7 @@ namespace Sop.Spider.Analyzer
 			{
 				throw new SpiderArgumentException("下载文件 " + ex.Message);
 			}
+			return Task.FromResult<bool>(fileExist);
 		}
 
 		/// <summary>

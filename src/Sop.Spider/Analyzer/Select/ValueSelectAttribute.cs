@@ -4,6 +4,8 @@ namespace Sop.Spider.Analyzer
 {
 	/// <summary>
 	/// 内容选择器（用于解析实体匹配内容信息，根据实体（xPath、正则、等属性）解析网页）
+	/// TODO: 疑问 xpth对于不同前缀class demo_1 demo_2  选择的支持是否有更好的支持，详细见微信搜狗
+	/// 
 	/// </summary>
 	public class ValueSelectAttribute : SelectAttribute
 	{
@@ -27,6 +29,7 @@ namespace Sop.Spider.Analyzer
 		/// </summary>
 		public ValueSelectAttribute()
 		{
+			
 		}
 
 		/// <summary>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sop.Spider.Common;
 
 namespace Sop.Spider.Analyzer
 {
@@ -61,26 +62,9 @@ namespace Sop.Spider.Analyzer
 			{
 				environments.Add(property.Key, property.Value);
 			}
-
-			if (_model.ShareValueSelectors != null)
-			{
-				foreach (var selector in _model.ShareValueSelectors)
-				{
-					string name = selector.Name;
-					var value = selectable.Select(selector.ToSelector()).GetValue();
-					if (!environments.ContainsKey(name))
-					{
-						environments.Add(name, value);
-					}
-					else
-					{
-						environments[name] = value;
-					}
-				}
-			}
-
+			 
+			#region 数据模型的选择器
 			bool singleExtractor = _model.Selector == null;
-
 			if (!singleExtractor)
 			{
 				var selector = _model.Selector.ToSelector();
@@ -94,7 +78,6 @@ namespace Sop.Spider.Analyzer
 							? list.Take(_model.Take).ToList()
 							: list.Skip(list.Count - _model.Take).ToList();
 					}
-
 					for (var i = 0; i < list.Count; ++i)
 					{
 						var item = list.ElementAt(i);
@@ -121,7 +104,28 @@ namespace Sop.Spider.Analyzer
 				{
 					Logger?.LogWarning($"解析到空数据，类型: {_model.TypeName}");
 				}
+			} 
+			#endregion
+
+
+			if (_model.ShareValueSelectors != null)
+			{
+				foreach (var selector in _model.ShareValueSelectors)
+				{
+					string name = selector.Name;
+					var value = selectable.Select(selector.ToSelector()).GetValue();
+					if (!environments.ContainsKey(name))
+					{
+						environments.Add(name, value);
+					}
+					else
+					{
+						environments[name] = value;
+					}
+				}
 			}
+
+		
 
 			if (results.Count > 0)
 			{
@@ -132,7 +136,7 @@ namespace Sop.Spider.Analyzer
 				}
 				else
 				{
-					((ParseResult<T>) items).AddRange(results);
+					((ParseResult<T>)items).AddRange(results);
 				}
 			}
 
@@ -201,7 +205,7 @@ namespace Sop.Spider.Analyzer
 					value = field.ValueOption == ValueOption.Count
 						? selectable.SelectList(selector).Nodes().Count().ToString()
 						: selectable.Select(selector)?.GetValue(field.ValueOption);
-				} 
+				}
 				#endregion
 
 				if (!string.IsNullOrWhiteSpace(value))
@@ -222,7 +226,7 @@ namespace Sop.Spider.Analyzer
 
 						}
 					}
-					
+
 				}
 
 

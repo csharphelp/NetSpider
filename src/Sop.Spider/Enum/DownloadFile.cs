@@ -13,11 +13,11 @@ namespace Sop.Spider
 		/// 不下载
 		/// </summary>
 		NotDownLoad,
-        /// <summary>
+		/// <summary>
 		/// 分类下载
 		/// </summary>
 		SortDownLoad,
-         
+
 		/// <summary>
 		/// 压缩格式：RAR、ZIP
 		/// </summary>
@@ -38,8 +38,9 @@ namespace Sop.Spider
 		/// 文档格式有：TXT、DOC、XLS、PPT、DOCX、XLSX、PPTX 等
 		/// </summary>
 		DocumentDownLoad,
-
-
+		/// <summary>
+		/// 
+		/// </summary>
 		RemoveWebResDownload
 	}
 }

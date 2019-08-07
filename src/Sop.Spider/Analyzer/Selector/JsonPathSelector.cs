@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
@@ -52,8 +53,9 @@ namespace Sop.Spider.Analyzer
 				if (json is string)
 				{
 					if (JsonConvert.DeserializeObject(json) is JObject o)
-					{
+					{ 
 						var items = o.SelectTokens(_jsonPath).Select(t => t.ToString()).ToList();
+						//TODO 解析异常问题，目前对异常不做判断
 						if (items.Count > 0)
 						{
 							list.AddRange(items);

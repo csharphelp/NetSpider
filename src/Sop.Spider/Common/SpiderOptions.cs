@@ -1,31 +1,39 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using Sop.Spider.DataStorage;
+using Sop.Spider.Statistics;
 using StackExchange.Redis;
 
 namespace Sop.Spider.Common
 {
 	/// <summary>
 	/// 任务选项
+	///
+	/// TODO 配置文件今天话，取消依赖注入
 	/// </summary>
 	public class SpiderOptions
-	{
+	{ 
 		private readonly IConfiguration _configuration;
+
+
+		public const string ConnectionString1 = "Database='SpiderStorage';Data Source=127.0.0.1;password=123456;User ID=root;Port=3306;";
+
+
 
 		#region 统计计数类型
 		public const string Success = "Success";
 		public const string Failed = "Failed";
 		public const string Start = "Start";
 		public const string Exit = "Exit";
-		public const string Total = "Total";		
+		public const string Total = "Total";
 		public const string DownloadSuccess = "DownloadSuccess";
-		public const string DownloadFailed ="DownloadFailed";
+		public const string DownloadFailed = "DownloadFailed";
 		public const string Print = "Print";
 
-		 
+
 
 		public const string TenantType = "Spider";
-	 
+
 		#endregion
 
 
@@ -38,6 +46,7 @@ namespace Sop.Spider.Common
 		{
 			get
 			{
+			 
 				ConfigurationOptions option = new ConfigurationOptions
 				{
 					AllowAdmin = true,
@@ -99,8 +108,6 @@ namespace Sop.Spider.Common
 		/// 数据库连接字符串
 		/// </summary>
 		public string ConnectionString => _configuration["ConnectionString"];
-
-
 
 
 

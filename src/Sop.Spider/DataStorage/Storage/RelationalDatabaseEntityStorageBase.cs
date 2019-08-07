@@ -258,9 +258,9 @@ namespace Sop.Spider.DataStorage
 				}
 
 				var options = context.Services.GetRequiredService<SpiderOptions>();
-				if (!string.IsNullOrWhiteSpace(options.StorageConnectionString))
+				if (!string.IsNullOrWhiteSpace(options.ConnectionString))
 				{
-					var conn = TryCreateDbConnection(options.StorageConnectionString);
+					var conn = TryCreateDbConnection(options.ConnectionString);
 					if (conn != null)
 					{
 						return conn;
