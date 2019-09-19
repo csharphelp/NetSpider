@@ -1,4 +1,6 @@
-# Sop.Spider(请查看需求和修改，根据自己需要入手)
+# Sop.Spider
+
+### (请查看需求和修改，根据自己需要入手)
 
 [![Build Status](https://dev.azure.com/zlzforever/DotnetSpider/_apis/build/status/dotnetcore.DotnetSpider?branchName=master)](https://dev.azure.com/zlzforever/DotnetSpider/_build/latest?definitionId=3&branchName=master)
 
@@ -17,15 +19,15 @@ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且�
 
 1. 增加redis 计数器
 2. 移除网络中心ADSL拨号功能
-3. 增加了Sellenium 支持AJAX.
+3. 增加了Sellenium 支持AJAX.（设想）
 4. 优化下载器，对文件url解析处理（设想）。
 
 
 ### 修改
 
 1. 此版本依据原有项目扩展，目前不添加测试用例、目前以中文案例为准，详细参考中文案例[Sample项目](https://github.com/csharphelp/DotnetSpider/tree/master/src/Sample)
-2. 移除docker，容器化是趋势不是必须，目前支持部署在windows+centos为主，移除docker的支持
-3. 
+2. 移除docker强依赖配置，容器化是趋势不是必须，目前支持部署在windows+centos为主，移除docker的支持
+3. 同步更新源：https://github.com/dotnetcore/DotnetSpider 根据变动适当调整更新，原始项目设计思路、设计方式等同步更新
 
 ### 需求
 
@@ -46,10 +48,10 @@ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且�
 
 ### 开发环境
 
-1. Visual Studio 2017 (15.3 or later) 
-2. [.NET Core 2.2 or later](https://www.microsoft.com/net/download/windows)
+1. 开发工具：Visual Studio 2017 (15.3 or later) 
+2. [.NET Core 2.2 or later](https://www.microsoft.com/net/download/windows) 必要条件 支持NET FRAMEWORK
 3. MySql (非必需)
-4. Redis (非必需)
+4. Redis (非必需)(推荐配置使用)
 5. SqlServer(非必需)
 6. PostgreSQL (非必需)
 7. MongoDb  (非必需)
@@ -63,10 +65,12 @@ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且�
 https://github.com/csharphelp/DotnetSpider/wiki
 
 ### 案例
+最好的说明文件就是看demo,
 [请查看 Sample 详细案例 ](https://github.com/csharphelp/DotnetSpider/tree/master/src/Sample)
   
  
 ### 其他
 
-QQ Group: 721420150(2人群，人员极少，不建议加入)
+QQ Group: 721420150(10个人的垃圾小群，人员极少)
+
 Email: sopcce@qq.com
