@@ -22,10 +22,7 @@ namespace Sample
 				.WriteTo
 				.RollingFile("dotnet-spider.log");
 			Log.Logger = configure.CreateLogger();
-
-
-
-
+			 
 
 			////案例1实体采集
 			//await CnblogsNewsSpider.Run();

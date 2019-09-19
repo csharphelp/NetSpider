@@ -13,7 +13,8 @@ namespace Sop.Spider.Statistics
 	/// <summary>
 	/// TODO： 没有充分测试 
 	/// </summary>
-	public class RedisStatisticsStore : IStatisticsStore
+	public class RedisStatisticsStore : 
+
 	{
 		private readonly string Count = "Count";
 		private readonly string Down = "Download";
@@ -23,7 +24,10 @@ namespace Sop.Spider.Statistics
 
 		private readonly long _time;
 		private readonly SpiderOptions _options;
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="options"></param>
 		public RedisStatisticsStore(SpiderOptions options)
 		{
 			_time = (long)DateTimeHelper.GetCurrentUnixMilliseconds();
@@ -177,7 +181,7 @@ namespace Sop.Spider.Statistics
 
 		#region Download
 		/// <summary>
-		/// 
+		/// 增量下载成功
 		/// </summary>
 		/// <param name="agentId"></param>
 		/// <param name="count"></param>
@@ -192,7 +196,7 @@ namespace Sop.Spider.Statistics
 
 		}
 		/// <summary>
-		/// 下载失败
+		/// 增量下载失败
 		/// </summary>
 		/// <param name="agentId"></param>
 		/// <param name="count"></param>

@@ -22,6 +22,12 @@ namespace Sop.Spider
 	/// </summary>
 	public static class ServiceCollectionExtensions
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="services"></param>
+		/// <param name="config"></param>
+		/// <returns></returns>
 		public static IServiceCollection ConfigureAppConfiguration(this IServiceCollection services,
 			string config = null)
 		{

@@ -16,7 +16,9 @@ namespace Sop.Spider.Statistics
 		private readonly ILogger _logger;
 		private readonly IStatisticsStore _statisticsStore;
 		private readonly SpiderOptions _options;
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool IsRunning { get; private set; }
 
 		/// <summary>

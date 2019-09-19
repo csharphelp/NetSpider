@@ -17,11 +17,23 @@
         <RepositoryUrl>https://github.com/csharphelp/Sop.Spider</RepositoryUrl>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Company>Sopcce@qq.com;</Company>
+        <ApplicationIcon />
+        <Win32Resource />
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>E:\Git\csharphelp\DotnetSpider\src\Sop.Spider\Sop.Spider.xml</DocumentationFile>
+      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+      <WarningsAsErrors />
     </PropertyGroup>
 
     <ItemGroup>
       <None Remove="DESIGN.md" />
       <None Remove="README.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="readme.md" />
     </ItemGroup>
     <ItemGroup>
         <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
@@ -54,6 +66,9 @@
         <PackageReference Include="Google.Protobuf" Version="3.6.1.0" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Update="Spider - Copy.Properties.cs">
+          <DependentUpon>Spider.cs</DependentUpon>
+        </Compile>
         <Compile Update="Spider.Properties.cs">
             <DependentUpon>Spider.cs</DependentUpon>
         </Compile>

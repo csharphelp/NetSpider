@@ -5,6 +5,7 @@ namespace Sop.Spider.Analyzer
 {
 	/// <summary>
 	/// 默认数据解析器
+	/// <code></code>
 	/// </summary>
 	public class DataParser : DataParserBase
 	{

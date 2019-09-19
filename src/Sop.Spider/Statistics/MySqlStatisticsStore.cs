@@ -9,15 +9,24 @@ using Sop.Spider.Entity;
 
 namespace Sop.Spider.Statistics
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class MySqlStatisticsStore : IStatisticsStore
 	{
 		private readonly SpiderOptions _options;
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="options"></param>
 		public MySqlStatisticsStore(SpiderOptions options)
 		{
 			_options = options;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public async Task EnsureDatabaseAndTableCreatedAsync()
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
@@ -31,7 +40,12 @@ namespace Sop.Spider.Statistics
 				await conn.ExecuteAsync(sql2);
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ownerId"></param>
+		/// <param name="count"></param>
+		/// <returns></returns>
 		public async Task IncrementTotalAsync(string ownerId, int count)
 		{
 			var sql =
@@ -46,7 +60,11 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ownerId"></param>
+		/// <returns></returns>
 		public async Task IncrementSuccessAsync(string ownerId)
 		{
 			var sql =
@@ -60,7 +78,12 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ownerId"></param>
+		/// <param name="count"></param>
+		/// <returns></returns>
 		public async Task IncrementFailedAsync(string ownerId, int count = 1)
 		{
 			var sql =
@@ -74,7 +97,11 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ownerId"></param>
+		/// <returns></returns>
 		public async Task StartAsync(string ownerId)
 		{
 			var sql =
@@ -89,7 +116,11 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ownerId"></param>
+		/// <returns></returns>
 		public async Task ExitAsync(string ownerId)
 		{
 			var sql =
@@ -104,7 +135,13 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="agentId"></param>
+		/// <param name="count"></param>
+		/// <param name="elapsedMilliseconds"></param>
+		/// <returns></returns>
 		public async Task IncrementDownloadSuccessAsync(string agentId, int count, long elapsedMilliseconds)
 		{
 			var sql =
@@ -120,7 +157,13 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="agentId"></param>
+		/// <param name="count"></param>
+		/// <param name="elapsedMilliseconds"></param>
+		/// <returns></returns>
 		public async Task IncrementDownloadFailedAsync(string agentId, int count, long elapsedMilliseconds)
 		{
 			var sql =
@@ -136,7 +179,12 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="page"></param>
+		/// <param name="size"></param>
+		/// <returns></returns>
 		public async Task<IEnumerable<DownloadStatistics>> GetDownloadStatisticsListAsync(int page, int size)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
@@ -151,7 +199,11 @@ namespace Sop.Spider.Statistics
 					})).ToList();
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="agentId"></param>
+		/// <returns></returns>
 		public async Task<DownloadStatistics> GetDownloadStatisticsAsync(string agentId)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
@@ -164,7 +216,11 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ownerId"></param>
+		/// <returns></returns>
 		public async Task<SpiderStatistics> GetSpiderStatisticsAsync(string ownerId)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
@@ -177,7 +233,12 @@ namespace Sop.Spider.Statistics
 					});
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="page"></param>
+		/// <param name="size"></param>
+		/// <returns></returns>
 		public async Task<IEnumerable<SpiderStatistics>> GetSpiderStatisticsListAsync(int page, int size)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
