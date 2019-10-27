@@ -552,7 +552,11 @@ namespace Sop.Spider
 				_logger.LogInformation($"任务 {Id} 速度控制器退出");
 			});
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="message"></param>
+		/// <returns></returns>
 		private Task HandleCommandAsync(Event message)
 		{
 			switch (message.Type)
@@ -566,7 +570,11 @@ namespace Sop.Spider
 
 			return Task.CompletedTask;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="message"></param>
+		/// <returns></returns>
 		private async Task HandleMessageAsync(Event message)
 		{
 			if (string.IsNullOrWhiteSpace(message.Data))
@@ -679,7 +687,7 @@ namespace Sop.Spider
 							foreach (var followRequest in context.FollowRequests)
 							{
 								followRequest.Depth = response.Request.Depth + 1;
-								if (followRequest.Depth <= Depth)
+								if (followRequest.Depth <= GetDepth())
 								{
 									requests.Add(followRequest);
 								}
@@ -757,6 +765,14 @@ namespace Sop.Spider
 			{
 				_logger.LogError($"任务 {Id} 处理消息 {message} 失败: {ex}");
 			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		private int GetDepth()
+		{
+			throw new NotImplementedException();
 		}
 
 		/// <summary>

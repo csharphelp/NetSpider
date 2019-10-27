@@ -171,7 +171,9 @@ namespace Sop.Spider
 				}
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public int EnqueueBatchCount { get; set; } = 1000;
 
 		/// <summary>
@@ -225,7 +227,11 @@ namespace Sop.Spider
 		/// <exception cref="SpiderException"></exception>
 		public int EmptySleepTime
 		{
-			get => _emptySleepTime;
+			get
+			{
+				return _emptySleepTime;
+			}
+
 			set
 			{
 				if (value < _speedControllerInterval / 1000)
@@ -235,7 +241,7 @@ namespace Sop.Spider
 				}
 
 				if (value < 0)
-				{ 
+				{
 					_logger?.LogError("等待结束时间必需大于 0 (秒)");
 				}
 

@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <Version>0.1.0</Version>
+        <Authors>Sopcce@qq.com;</Authors>
+        <Copyright>Copyright 2018 sopcce.com</Copyright>
+        <PackageId>Sop.Spider</PackageId>
+        <Description>Sop.Spider a .NET Standard web crawling library. It is lightweight, efficient and fast high-level web crawling &amp; scraping framework</Description>
+        <PackageTags>DotnetSpider;crawler;dotnet core;Sop.Spider</PackageTags>
+        <PackageProjectUrl>https://github.com/csharphelp/Sop.Spider</PackageProjectUrl>
+        <PackageIconUrl>https://avatars3.githubusercontent.com/u/50726447?s=200&amp;v=4</PackageIconUrl>
+        <RepositoryUrl>https://github.com/csharphelp/Sop.Spider</RepositoryUrl>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Company>Sopcce@qq.com;</Company>
+        <ApplicationIcon />
+        <Win32Resource />
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>E:\Git\csharphelp\DotnetSpider\src\Sop.Spider\Sop.Spider.xml</DocumentationFile>
+      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+      <WarningsAsErrors />
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="DESIGN.md" />
+      <None Remove="readme.md" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
+        <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+        <PackageReference Include="ServiceStack" Version="5.5.0" />
+        <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+        <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.8" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.4" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+        <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+        <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+        <PackageReference Include="Dapper" Version="1.60.6" />
+        <PackageReference Include="MySqlConnector" Version="0.56.0" />
+        <PackageReference Include="MailKit" Version="2.2.0" />
+        <PackageReference Include="EPPlus" Version="4.5.3.2" />
+        <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="2.2.0" />
+        <PackageReference Include="lz4net" Version="1.0.15.93" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+        <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.6.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Spider - Copy.Properties.cs">
+          <DependentUpon>Spider.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Spider.Properties.cs">
+            <DependentUpon>Spider.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Data\Parser\DataParser`.cs">
+            <DependentUpon>DataParser.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+</Project>

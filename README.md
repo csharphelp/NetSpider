@@ -1,6 +1,6 @@
 # Sop.Spider
 
-### (请查看需求和修改，根据自己需要入手)
+## (本项目剔除了好多东西，为了快速简单高效使用，根据自己需要入手，如果有需要可以去看下[DotnetSpider](https://github.com/dotnetcore/DotnetSpider)原始项目)
 
 [![Build Status](https://dev.azure.com/zlzforever/DotnetSpider/_apis/build/status/dotnetcore.DotnetSpider?branchName=master)](https://dev.azure.com/zlzforever/DotnetSpider/_build/latest?definitionId=3&branchName=master)
 
@@ -10,11 +10,15 @@
 [![GitHub license](https://img.shields.io/github/license/dotnetcore/DotnetSpider.svg)](https://raw.githubusercontent.com/dotnetcore/DotnetSpider/master/LICENSE)
 
 
-### 介绍
-
-Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且快速的高级Web爬行和抓取框架,
+----
+## 介绍
+### 描述
+ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且快速的高级Web爬行和抓取框架,
 此项目是[DotnetSpider](https://github.com/dotnetcore/DotnetSpider)Fork的，因原始项目
 无法满足现有需求，随创建本新项目。
+
+----
+## 更新
 ### 现阶段任务
 
 1. 增加redis 计数器
@@ -42,8 +46,8 @@ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且�
 - 连接数：主要用来限制单台机器与服务端的连接数量。
 - 代理IP：主要用来伪装请求地址，提高单机并发数量。
 ----
-### 设计架构
-
+## 设计
+### 架构图
 ![DESIGN IMAGE](https://raw.githubusercontent.com/csharphelp/DotnetSpider/master/images/data-info-sys.png)
 
 ### 开发环境
@@ -58,11 +62,85 @@ Sop.Spider，一个c# .NET标准网络爬行库。 它是轻量级，高效且�
 8. Kafka   (非必需)
 
 
-### 更多文档
+### 一 框架介绍(后期修改)
+ 1. 基类为 Spider.cs[  没有改变，还是使用作者的- ]，默认所有爬虫继承强制此类
+ 2. 提供数据解析接口Analyzer(原DotnetSpider中的请对应名称，文件名称为改变升级）推荐使用实体处理器，选选择后格式的操作
+  - 选择处理器：Select（提供了内容选择器、目标链接 **原作者应该为了实现跟随循环链接采集,暂时这么叫，原则我想对这块实现js 操作，但是能力有限**、实体选择器）
+  - 选择处理器：Selector（提供了XPath、正则Regex、Css、JsonPath、Enviroment **环境实现就是对本地环境字符串的替换，详细见DataParser`.cs文件中的环境替换**）
+  - 格式化处理器：Format（提供了诸多格式化处理方法）
+  - 数据解析器：DataParser（提供了数据解析存储操作的处理器。主要是对实体解析、建库**Storage相关的文件**、建表、添加数据的解析）
+  - 下载处理器：Download（** 对下载中心等模块目前还没有研究 ** 提供下载服务，主要使用IDownloaded.cs 接口文件等）
+  - 网络中心:Network 只保留网络判断，其他移除
+  - 计数统计、URL去重等：Statistics、Scheduler 暂时保留原来，有改动需求。目前保持原来
 
+  ** 其他非主要的文件暂时不做介绍，这里没有使用 **
+### 项目细节介绍
+
+
+```text
+Sop.Spider/
+├── Analyzer/[数据解析器]
+    ├── Format/[数据格式化解析器]     
+        ├── DataParser`.cs
+        ├── DataParserBase.cs
+        ├── DataParserHelper.cs
+        ├── IParseResult.cs
+        ├── Model.cs
+        ├── ParseResult.cs
+        └── SelectorExtensions.cs
+	├── HtmlAgilityPack.Css/[HtmlAgilityPack选择处理器]
+	├── Select/[爬虫实体解析器]
+	└── Selector/[实体选择筛选器]
+        ├── DataParser.cs 
+        ├── DataParser`.cs
+        ├── DataParserBase.cs
+        ├── DataParserHelper.cs
+        ├── IParseResult.cs
+        ├── Model.cs
+        ├── ParseResult.cs
+        └── SelectorExtensions.cs
+├── Common/
+├── DataStorage/
+├── Download/
+├── DownloadAgent/
+├── DownloadAgentRegisterCenter/
+├── EventBus/
+├── Extensions/
+├── Network/
+├── DataStorage/
+├── RequestSupplier/
+├── DataStorage/
+├── Scheduler/
+├── Statistics/
+	├── HtmlAgilityPack.Css/[HtmlAgilityPack选择处理器]
+	├── Select/[爬虫实体解析器]
+	├── Selector/[实体选择筛选器]
+    └── js/
+        ├── bootstrap.bundle.js
+        ├── bootstrap.bundle.js.map
+        └── bootstrap.min.js.map
+├── Spider.cs
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+├── readme.md
+└── Status.cs
+
+
+```
+
+## 使用入手
+### 文档介绍
 **完成度：0%**
 
 https://github.com/csharphelp/DotnetSpider/wiki
+不打算写，可以看demo 中文注释，在使用上不断完善吧
 
 ### 案例
 最好的说明文件就是看demo,
