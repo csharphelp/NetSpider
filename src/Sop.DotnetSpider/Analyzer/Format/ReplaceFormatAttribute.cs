@@ -1,6 +1,7 @@
 ﻿using System;
+using Sop.DotnetSpider.Analyzer.Format;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// Returns a new string in which all occurrences of a specified string in the current instance are replaced with another specified string.

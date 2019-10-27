@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sop.Spider.Core
+namespace Sop.DotnetSpider.Core
 {
     /// <summary>
     /// Defines methods for objects that are managed by the host.

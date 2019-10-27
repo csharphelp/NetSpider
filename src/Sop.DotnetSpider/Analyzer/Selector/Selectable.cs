@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Analyzer.Selector;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 选择器

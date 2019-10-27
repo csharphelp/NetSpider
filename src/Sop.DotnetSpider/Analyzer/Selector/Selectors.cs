@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
 	/// <summary>
 	/// 查询器的构建帮助类, 相同的查询器会缓存起来.

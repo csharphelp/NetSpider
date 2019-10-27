@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Download;
 
-namespace Sop.Spider.Scheduler
+namespace Sop.DotnetSpider.Scheduler
 {
 	/// <summary>
 	/// 调度器接口

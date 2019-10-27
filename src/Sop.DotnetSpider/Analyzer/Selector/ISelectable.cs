@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
 
 

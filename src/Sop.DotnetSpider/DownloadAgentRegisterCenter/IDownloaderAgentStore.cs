@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sop.Spider.DownloadAgentRegisterCenter.Entity;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter
 {
 	/// <summary>
 	/// 下载器代理存储接口

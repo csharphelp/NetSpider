@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter.Entity
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity
 {
 	/// <summary>
 	/// 下载器代理

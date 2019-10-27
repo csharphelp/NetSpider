@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
     /// <summary>
     /// 查询器类型

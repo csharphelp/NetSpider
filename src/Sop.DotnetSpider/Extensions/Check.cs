@@ -1,6 +1,6 @@
 using System;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 参数合法性检查类

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     internal static class ExtensionMethods
     {

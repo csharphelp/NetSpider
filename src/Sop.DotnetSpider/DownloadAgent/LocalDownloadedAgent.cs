@@ -1,10 +1,10 @@
 using System;
-using Sop.Spider.Common;
-using Sop.Spider.EventBus;
-using Sop.Spider.Network;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.EventBus;
+using Sop.DotnetSpider.Network;
 using Microsoft.Extensions.Logging;
 
-namespace Sop.Spider.DownloadAgent
+namespace Sop.DotnetSpider.DownloadAgent
 {
 	/// <summary>
 	/// 本地下器代理

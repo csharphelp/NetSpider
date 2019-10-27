@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 列信息

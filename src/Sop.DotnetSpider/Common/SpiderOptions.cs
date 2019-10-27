@@ -1,15 +1,15 @@
 using Microsoft.Extensions.Configuration;
 using System;
-using Sop.Spider.DataStorage;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.Statistics;
 using StackExchange.Redis;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 任务选项
 	///
-	/// TODO 配置文件今天话，取消依赖注入
+	/// TODO 取消依赖注入
 	/// </summary>
 	public class SpiderOptions
 	{ 
@@ -60,29 +60,7 @@ namespace Sop.Spider.Common
 				{
 					return option;
 				}
-				#region 尝试启动本机服务 windows服务
 
-				//var serviceControllers = ServiceController.GetServices();
-				//var listDictionary = new Dictionary<string, ServiceController>();
-				//foreach (var service in serviceControllers)
-				//{
-				//	if (service.ServiceName.ToLower().Contains("redis"))
-				//	{
-				//		listDictionary.Add(service.ServiceName.ToLower(), service);
-				//	}
-				//}
-				//if (listDictionary.ContainsKey("redis"))
-				//{
-				//	throw new System.Exception("不存在redis服务");
-				//}
-				//foreach (var info in listDictionary)
-				//{
-				//	if (info.Value.Status != ServiceControllerStatus.Running)
-				//	{
-				//		info.Value.Start();
-				//	}
-				//}
-				#endregion
 				return null;
 			}
 		}
@@ -190,7 +168,7 @@ namespace Sop.Spider.Common
 		/// Kafka 消费组
 		/// </summary>
 		public string KafkaConsumerGroup => string.IsNullOrWhiteSpace(_configuration["KafkaConsumerGroup"])
-			? "Sop.Spider"
+			? "Sop.DotnetSpider"
 			: _configuration["KafkaConsumerGroup"];
 
 		public int KafkaTopicPartitionCount => string.IsNullOrWhiteSpace(_configuration["KafkaTopicPartitionCount"])

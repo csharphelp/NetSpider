@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Hosting;
 
-namespace Sop.Spider.DownloadAgent
+namespace Sop.DotnetSpider.DownloadAgent
 {
     /// <summary>
     /// 下载器代理

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     #region Imports
 

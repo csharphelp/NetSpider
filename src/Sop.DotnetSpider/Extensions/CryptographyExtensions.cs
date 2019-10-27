@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
     /// <summary>
     /// 加、解密帮助类

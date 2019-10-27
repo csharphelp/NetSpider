@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 锁接口

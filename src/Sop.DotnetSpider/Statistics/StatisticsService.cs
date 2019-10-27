@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Sop.Spider.Common;
-using Sop.Spider.EventBus;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.EventBus;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// 统计服务

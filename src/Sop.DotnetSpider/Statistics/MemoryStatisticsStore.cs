@@ -3,9 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Sop.Spider.Entity;
+using Sop.DotnetSpider.Entity;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// 基于内存的统计存储

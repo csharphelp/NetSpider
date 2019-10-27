@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 代理提供接口

@@ -1,14 +1,15 @@
 using Dapper;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading.Tasks;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 关系型数据库保存实体解析结果

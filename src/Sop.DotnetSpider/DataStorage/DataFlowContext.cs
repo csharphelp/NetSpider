@@ -1,11 +1,12 @@
-using Sop.Spider.Analyzer;
-using Sop.Spider.Common;
-using Sop.Spider.Download;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Sop.DotnetSpider.Analyzer.Selector;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.Download;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 数据流处理器上下文

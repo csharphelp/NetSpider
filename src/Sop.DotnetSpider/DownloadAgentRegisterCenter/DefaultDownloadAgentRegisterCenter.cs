@@ -1,8 +1,8 @@
-using Sop.Spider.Common;
-using Sop.Spider.EventBus;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.EventBus;
 using Microsoft.Extensions.Logging;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter
 {
 	/// <summary>
 	/// 下载中心

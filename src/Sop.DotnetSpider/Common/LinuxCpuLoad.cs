@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 

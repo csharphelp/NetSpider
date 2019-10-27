@@ -13,6 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.Analyzer.Format;
+using Sop.DotnetSpider.Analyzer.Select;
 
 namespace Sample.samples
 {

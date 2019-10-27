@@ -1,10 +1,10 @@
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Download;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace Sop.Spider.Scheduler
+namespace Sop.DotnetSpider.Scheduler
 {
 	/// <summary>
 	/// 广度优先调度 基于内存(去重 URL)

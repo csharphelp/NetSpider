@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace Sop.Spider.Network.InternetDetector
+namespace Sop.DotnetSpider.Network.InternetDetector
 {
 	/// <summary>
 	/// 网络状态检测器

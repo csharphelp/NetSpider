@@ -1,9 +1,10 @@
 using System.IO;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using Newtonsoft.Json;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// JSON 文件保存解析结果(所有解析结果)

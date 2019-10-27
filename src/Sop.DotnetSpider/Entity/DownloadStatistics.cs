@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.Spider.Entity
+namespace Sop.DotnetSpider.Entity
 {
 	/// <summary>
 	/// 下载代理器的统计信息

@@ -10,10 +10,10 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using Sop.Spider.Network;
+using Sop.DotnetSpider.Network;
 using Microsoft.Extensions.Configuration;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	public static class Framework
 	{
@@ -50,7 +50,7 @@ namespace Sop.Spider.Common
 		public static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
 		public static readonly string GlobalDirectory =
-			Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Sop.Spider");
+			Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Sop.DotnetSpider");
 
 		public static string ChromeDriverPath;
 		public static readonly bool IsServer2008;
@@ -120,12 +120,7 @@ namespace Sop.Spider.Common
 			}
 		}
 
-		public static void SetEncoding()
-		{
-#if NETSTANDARD
-			Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-#endif
-		}
+	 
 		/// <summary>
 		/// 设置多线程
 		/// </summary>

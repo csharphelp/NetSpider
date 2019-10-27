@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
 	/// <summary>
 	/// 查询接口

@@ -1,6 +1,7 @@
 ﻿using System;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Format
 {
 	/// <summary>
 	/// 如果值等于EqualValue, 则返回Displacement. 比如用于: 采集的结果为: 是, 转化为 False

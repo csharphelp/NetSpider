@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     #region Imports
 

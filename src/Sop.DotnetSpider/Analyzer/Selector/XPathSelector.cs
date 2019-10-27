@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
+using Sop.DotnetSpider.Analyzer.Selector;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// Xpath选择器

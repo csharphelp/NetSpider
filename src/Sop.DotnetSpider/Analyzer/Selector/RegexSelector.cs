@@ -9,7 +9,7 @@ using HtmlAgilityPack;
 using System.Reflection;
 #endif
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
 	/// <summary>
 	/// 正则查询器

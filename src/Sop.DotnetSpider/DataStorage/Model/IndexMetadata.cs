@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 索引元数据

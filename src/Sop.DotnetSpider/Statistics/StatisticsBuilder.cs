@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// 

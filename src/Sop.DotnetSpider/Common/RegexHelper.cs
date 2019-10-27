@@ -1,7 +1,10 @@
 using System.Text.RegularExpressions;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class RegexHelper
 	{
 		/// <summary>

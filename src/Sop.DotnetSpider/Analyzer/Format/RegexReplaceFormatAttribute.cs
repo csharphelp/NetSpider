@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Sop.DotnetSpider.Analyzer.Format;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	///  正则格式化属性

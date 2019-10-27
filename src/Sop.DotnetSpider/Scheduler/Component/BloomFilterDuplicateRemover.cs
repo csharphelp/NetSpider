@@ -1,7 +1,7 @@
-using Sop.Spider.Common;
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.Download;
 
-namespace Sop.Spider.Scheduler.Component
+namespace Sop.DotnetSpider.Scheduler.Component
 {
 	/// <summary>
 	/// BloomFilterDuplicateRemover for huge number of urls.

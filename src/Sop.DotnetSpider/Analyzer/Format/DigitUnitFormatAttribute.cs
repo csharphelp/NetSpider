@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Format
 {
 	/// <summary>
 	/// 中文转数字

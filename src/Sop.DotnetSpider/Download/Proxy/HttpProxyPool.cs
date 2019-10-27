@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 代理池

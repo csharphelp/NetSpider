@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// BloomFilter

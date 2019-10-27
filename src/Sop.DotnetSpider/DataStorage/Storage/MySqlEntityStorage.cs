@@ -1,11 +1,11 @@
 using Microsoft.Extensions.Logging;
 using MySql.Data.MySqlClient;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// MySql 保存解析(实体)结果

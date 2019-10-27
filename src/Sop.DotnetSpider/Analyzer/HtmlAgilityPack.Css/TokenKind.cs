@@ -1,4 +1,4 @@
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     /// <summary>
     /// Represents the classification of a token.

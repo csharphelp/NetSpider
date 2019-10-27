@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Hosting;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// 统计服务中心

@@ -1,6 +1,6 @@
-using Sop.Spider.DataStorage;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 

@@ -10,10 +10,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using LZ4;
 using Microsoft.Extensions.Logging;
-using Sop.Spider.Common;
-using Cookie = Sop.Spider.Common.Cookie;
+using Sop.DotnetSpider.Common;
+using Cookie = Sop.DotnetSpider.Common.Cookie;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// WebDriverDownloaded

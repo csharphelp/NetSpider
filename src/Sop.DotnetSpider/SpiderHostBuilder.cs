@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Sop.Spider.Common;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.Statistics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 主要服务器

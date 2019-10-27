@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.Spider.Entity
+namespace Sop.DotnetSpider.Entity
 {
 	/// <summary>
 	/// 爬虫的统计信息

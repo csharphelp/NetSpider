@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using Sop.Spider.Common;
-using Sop.Spider.DownloadAgentRegisterCenter.Entity;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity;
 using MySql.Data.MySqlClient;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter.Internal
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal
 {
 	public class MySqlDownloadAgentStore : IDownloadAgentStore
 	{

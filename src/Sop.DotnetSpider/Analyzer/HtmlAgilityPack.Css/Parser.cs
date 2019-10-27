@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using Sop.Spider.Analyzer.HtmlAgilityPack.Css;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     #region Imports
 

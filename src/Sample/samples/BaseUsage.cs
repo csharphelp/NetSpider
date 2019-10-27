@@ -1,10 +1,9 @@
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using Sop.Spider;
-using Sop.Spider.Analyzer;
-using Sop.Spider.DataStorage;
-using Sop.Spider.Download;
-using Sop.Spider.EventBus;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.EventBus;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

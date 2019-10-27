@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	public class HttpRowTextProxySupplier : IProxySupplier
 	{

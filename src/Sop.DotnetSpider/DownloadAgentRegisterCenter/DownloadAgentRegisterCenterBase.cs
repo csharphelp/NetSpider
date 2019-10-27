@@ -1,14 +1,14 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
-using Sop.Spider.DownloadAgentRegisterCenter.Entity;
-using Sop.Spider.EventBus;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity;
+using Sop.DotnetSpider.EventBus;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter
 {
 	/// <summary>
 	/// 下载中心

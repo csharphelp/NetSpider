@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 优先级的线程安全队列

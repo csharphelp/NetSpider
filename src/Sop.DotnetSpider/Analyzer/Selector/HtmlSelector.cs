@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
 	/// <summary>
 	/// HTML文件查询的抽象

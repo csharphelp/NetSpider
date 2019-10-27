@@ -5,16 +5,16 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
-using Sop.Spider.DownloadAgentRegisterCenter.Entity;
-using Sop.Spider.Download;
-using Sop.Spider.EventBus;
-using Sop.Spider.Network;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity;
+using Sop.DotnetSpider.Download;
+using Sop.DotnetSpider.EventBus;
+using Sop.DotnetSpider.Network;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Sop.Spider.DownloadAgent
+namespace Sop.DotnetSpider.DownloadAgent
 {
 	/// <summary>
 	/// 下载器代理基类

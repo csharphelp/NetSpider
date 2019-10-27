@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Select
 {
 	/// <summary>
 	/// 目标链接选择器（用于批量采集时，选择目标）

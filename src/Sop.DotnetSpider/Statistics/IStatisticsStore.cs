@@ -1,8 +1,8 @@
-using Sop.Spider.Entity;
+using Sop.DotnetSpider.Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// 统计存储接口

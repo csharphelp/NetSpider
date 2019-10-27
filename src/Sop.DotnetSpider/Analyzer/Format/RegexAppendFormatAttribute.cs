@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Format
 {
 	/// <summary>
 	/// 正则追加更是发处理器

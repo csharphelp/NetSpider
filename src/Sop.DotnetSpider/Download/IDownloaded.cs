@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 下载器

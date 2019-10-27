@@ -1,12 +1,13 @@
-﻿using Serilog.Core;
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
-using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Format
 {
 	/// <summary>
 	/// 下载内容

@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
+using Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
-    #region Imports
-
-	
-
-	#endregion
+    
 
     /// <summary>
     /// An <see cref="IElementOps{TElement}"/> implementation for <see cref="HtmlNode"/>

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Sop.Spider.DataStorage;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 
 

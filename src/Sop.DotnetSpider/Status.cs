@@ -2,15 +2,13 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 爬虫状态
 	/// </summary>
 	[Flags]
-#if !NET451
 	[JsonConverter(typeof(StringEnumConverter))]
-#endif
 	public enum Status
 	{
 		/// <summary>

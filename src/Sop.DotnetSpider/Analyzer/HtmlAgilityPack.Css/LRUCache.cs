@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="TInput"></typeparam>
+	/// <typeparam name="TResult"></typeparam>
 	public class LruCache<TInput, TResult> : IDisposable
 	{
 
@@ -11,7 +16,11 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
 		private readonly Func<TInput, TResult> _evalutor;
 		private readonly object _rwl = new object();
 		private int _capacity;
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="evalutor"></param>
+		/// <param name="capacity"></param>
 		public LruCache(Func<TInput, TResult> evalutor, int capacity)
 		{
 			if (capacity <= 0)
@@ -28,7 +37,11 @@ namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
 			_lruList.Remove(key);
 			return existed;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="key"></param>
+		/// <returns></returns>
 
 		public TResult GetValue(TInput key)
 		{

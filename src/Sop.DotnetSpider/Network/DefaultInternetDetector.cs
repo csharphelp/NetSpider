@@ -1,7 +1,8 @@
 ﻿using System.Net.NetworkInformation;
 using System.Text;
+using Sop.DotnetSpider.Network.InternetDetector;
 
-namespace Sop.Spider.Network.InternetDetector
+namespace Sop.DotnetSpider.Network
 {
 	/// <summary>
 	/// 标准网络状态检测器, 通过PING某个网站是否能通

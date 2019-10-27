@@ -1,7 +1,7 @@
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using System;
 
-namespace Sop.Spider.EventBus
+namespace Sop.DotnetSpider.EventBus
 {
 	/// <summary>
 	/// 命令消息

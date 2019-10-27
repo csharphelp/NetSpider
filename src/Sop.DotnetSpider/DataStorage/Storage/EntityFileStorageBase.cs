@@ -3,8 +3,9 @@ using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Text;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 实体解析结果的文件存储器

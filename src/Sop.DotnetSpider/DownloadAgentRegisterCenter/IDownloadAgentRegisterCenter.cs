@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Hosting;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter
 {
 	/// <summary>
 	/// 下载中心

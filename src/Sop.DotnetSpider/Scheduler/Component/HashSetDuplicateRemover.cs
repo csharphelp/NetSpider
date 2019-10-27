@@ -1,8 +1,8 @@
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Download;
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 
-namespace Sop.Spider.Scheduler.Component
+namespace Sop.DotnetSpider.Scheduler.Component
 {
 	/// <summary>
 	/// 通过哈希去重

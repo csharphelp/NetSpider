@@ -1,11 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
-using Sop.Spider.DownloadAgent;
-using Sop.Spider.DownloadAgentRegisterCenter;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider.DownloadAgent;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter;
+using Sop.DotnetSpider.Statistics;
 using System;
-using Sop.Spider;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 爬虫类型

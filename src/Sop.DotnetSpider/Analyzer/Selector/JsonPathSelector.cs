@@ -4,8 +4,9 @@ using System.Linq;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Sop.DotnetSpider.Analyzer.Selector;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// JsonPath selector.

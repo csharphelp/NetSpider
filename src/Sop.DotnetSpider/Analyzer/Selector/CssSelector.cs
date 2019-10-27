@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Sop.Spider.Analyzer.HtmlAgilityPack.Css;
 using HtmlAgilityPack;
+using Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
 	/// <summary>
 	/// CSS 选择器

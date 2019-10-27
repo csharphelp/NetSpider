@@ -1,19 +1,18 @@
+using Dapper;
+using MySql.Data.MySqlClient;
+using Sop.DotnetSpider.Download;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Dapper;
-using Sop.Spider.Common;
-using Sop.Spider.Download;
-using MySql.Data.MySqlClient;
 
-namespace Sop.Spider.RequestSupplier
+namespace Sop.DotnetSpider.RequestSupplier
 {
-    /// <summary>
-    /// 基于关系型数据库的请求入队
-    /// </summary>
-    public class RelationalDatabaseRequestSupplier : IRequestSupplier
+	/// <summary>
+	/// 基于关系型数据库的请求入队
+	/// </summary>
+	public class RelationalDatabaseRequestSupplier : IRequestSupplier
     {
         private readonly string _sql;
         private readonly Database _database;

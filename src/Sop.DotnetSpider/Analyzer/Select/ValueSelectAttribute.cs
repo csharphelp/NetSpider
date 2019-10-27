@@ -1,6 +1,8 @@
 using System.Reflection;
+using Sop.DotnetSpider.Analyzer.Format;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Select
 {
 	/// <summary>
 	/// 内容选择器（用于解析实体匹配内容信息，根据实体（xPath、正则、等属性）解析网页）

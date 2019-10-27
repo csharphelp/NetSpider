@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
     /// <summary>
     /// Windows Form 帮助类

@@ -1,6 +1,6 @@
 using System;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// SpiderFormatException“Ï≥£

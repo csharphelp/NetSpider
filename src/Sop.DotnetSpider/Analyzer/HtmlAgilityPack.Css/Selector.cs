@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
 	/// <summary>
     /// Represents a selector implementation over an arbitrary type of elements.

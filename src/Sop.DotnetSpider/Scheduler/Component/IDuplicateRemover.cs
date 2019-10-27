@@ -1,7 +1,7 @@
 using System;
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Download;
 
-namespace Sop.Spider.Scheduler.Component
+namespace Sop.DotnetSpider.Scheduler.Component
 {
     public interface IDuplicateRemover : IDisposable
     {

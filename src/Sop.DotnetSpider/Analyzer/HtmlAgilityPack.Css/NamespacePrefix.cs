@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
 	/// <summary>
     /// Represent a type or attribute name.

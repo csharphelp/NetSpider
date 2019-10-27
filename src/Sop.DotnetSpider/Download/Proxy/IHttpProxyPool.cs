@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 代理池

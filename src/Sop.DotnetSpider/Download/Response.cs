@@ -1,4 +1,4 @@
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 下载结果

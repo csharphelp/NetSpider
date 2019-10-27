@@ -1,4 +1,4 @@
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 文件锁工厂接口

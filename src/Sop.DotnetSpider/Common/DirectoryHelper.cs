@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
     public static class DirectoryHelper
     {

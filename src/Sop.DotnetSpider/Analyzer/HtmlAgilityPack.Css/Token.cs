@@ -1,6 +1,8 @@
 using System;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
 	/// <summary>
     /// Represent a token and optionally any text associated with it.

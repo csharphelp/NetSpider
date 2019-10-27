@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 解析结果的文件存储器

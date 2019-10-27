@@ -1,4 +1,4 @@
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 数据流处理器的处理结果

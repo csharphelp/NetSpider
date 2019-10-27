@@ -3,10 +3,10 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using Microsoft.Extensions.Logging;
 
-namespace Sop.Spider.EventBus
+namespace Sop.DotnetSpider.EventBus
 {
 	/// <summary>
 	/// 本地事件注入

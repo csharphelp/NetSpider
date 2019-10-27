@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
-using Sop.Spider.Common;
-using Sop.Spider.DataStorage;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 实体基类（解析实体）

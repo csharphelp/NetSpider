@@ -1,6 +1,7 @@
 ﻿using System;
+using Sop.DotnetSpider.Analyzer.Format;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 把Unix时间转换成DateTime

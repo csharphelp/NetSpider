@@ -1,8 +1,8 @@
-using Sop.Spider.DataStorage;
-using Sop.Spider.Download;
-using Sop.Spider.Scheduler.Component;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.Download;
+using Sop.DotnetSpider.Scheduler.Component;
 
-namespace Sop.Spider.Scheduler
+namespace Sop.DotnetSpider.Scheduler
 {
 	internal class FakeDuplicateRemover : IDuplicateRemover
 	{

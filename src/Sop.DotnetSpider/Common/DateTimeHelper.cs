@@ -1,6 +1,6 @@
 using System;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 时间的帮助类

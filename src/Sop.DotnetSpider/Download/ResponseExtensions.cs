@@ -1,8 +1,9 @@
-using Sop.Spider.Analyzer;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.Common;
 using System;
+using Sop.DotnetSpider.Analyzer.Selector;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 

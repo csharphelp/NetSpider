@@ -23,8 +23,9 @@
 
 using System;
 using System.Collections.Generic;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     // Adapted from Mono Rocks
 

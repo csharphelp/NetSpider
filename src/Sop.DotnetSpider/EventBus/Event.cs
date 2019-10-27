@@ -5,12 +5,12 @@
 #pragma warning disable 1591, 0612, 3021
 #region Designer generated code
 
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Sop.Spider.EventBus {
+namespace Sop.DotnetSpider.EventBus {
 
   /// <summary>Holder for reflection information generated from event.proto</summary>
   public static partial class EventReflection {
@@ -31,7 +31,7 @@ namespace Sop.Spider.EventBus {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sop.Spider.EventBus.Event), global::Sop.Spider.EventBus.Event.Parser, new[]{ "Type", "Timestamp", "Data" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sop.DotnetSpider.EventBus.Event), global::Sop.DotnetSpider.EventBus.Event.Parser, new[]{ "Type", "Timestamp", "Data" }, null, null, null)
           }));
     }
     #endregion
@@ -46,7 +46,7 @@ namespace Sop.Spider.EventBus {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Sop.Spider.EventBus.EventReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Sop.DotnetSpider.EventBus.EventReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

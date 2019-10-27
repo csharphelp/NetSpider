@@ -8,12 +8,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using LZ4;
 using Microsoft.Extensions.Logging;
-using Cookie = Sop.Spider.Common.Cookie;
+using Cookie = Sop.DotnetSpider.Common.Cookie;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 基于 HttpClient 实现的下载器

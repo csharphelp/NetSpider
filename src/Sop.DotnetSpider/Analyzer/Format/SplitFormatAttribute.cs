@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Sop.DotnetSpider.Analyzer.Format;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 截取格式化

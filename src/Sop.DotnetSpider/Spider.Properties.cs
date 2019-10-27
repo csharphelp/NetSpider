@@ -1,17 +1,17 @@
 using Microsoft.Extensions.Logging;
 using Serilog.Core;
-using Sop.Spider.Common;
-using Sop.Spider.DataStorage;
-using Sop.Spider.Download;
-using Sop.Spider.EventBus;
-using Sop.Spider.RequestSupplier;
-using Sop.Spider.Scheduler;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.Download;
+using Sop.DotnetSpider.EventBus;
+using Sop.DotnetSpider.RequestSupplier;
+using Sop.DotnetSpider.Scheduler;
+using Sop.DotnetSpider.Statistics;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// Spider 实体属性类
@@ -171,7 +171,9 @@ namespace Sop.Spider
 				}
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public int EnqueueBatchCount { get; set; } = 1000;
 
 		/// <summary>

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Sop.Spider.DownloadAgentRegisterCenter
+namespace Sop.DotnetSpider.DownloadAgentRegisterCenter
 {
 	public class DownloadAgentRegisterCenterBuilder
 	{

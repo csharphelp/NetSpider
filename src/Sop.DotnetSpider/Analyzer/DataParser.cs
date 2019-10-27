@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
-using Sop.Spider.DataStorage;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 默认数据解析器

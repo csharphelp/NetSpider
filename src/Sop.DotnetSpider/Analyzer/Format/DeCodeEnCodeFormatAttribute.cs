@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Format
 {
 	/// <summary>
 	/// 把数值进行HTML解码
@@ -9,6 +11,9 @@ namespace Sop.Spider.Analyzer
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 	public class DeCodeEnCodeFormatAttribute : FormatBaseAttribute
 	{
+		/// <summary>
+		/// 
+		/// </summary>
 		public CodeType CodeType { get; set; }
 		/// <summary>
 		/// 实现数值的转化

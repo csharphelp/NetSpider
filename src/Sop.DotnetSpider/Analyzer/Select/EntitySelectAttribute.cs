@@ -1,6 +1,7 @@
 using System;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Select
 {
 	/// <summary>
 	/// 实体选择器

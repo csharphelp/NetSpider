@@ -1,4 +1,4 @@
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	///—πÀı¿‡–Õ

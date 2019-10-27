@@ -1,4 +1,4 @@
-namespace Sop.Spider.EventBus
+namespace Sop.DotnetSpider.EventBus
 {
 	public static class EventBusExtensions
 	{

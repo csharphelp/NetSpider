@@ -1,11 +1,12 @@
-using Sop.Spider.DataStorage;
-using Sop.Spider.Download;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.Download;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 数据解析相关的帮助文件

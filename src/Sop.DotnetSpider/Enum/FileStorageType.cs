@@ -1,4 +1,4 @@
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 浏览器类型

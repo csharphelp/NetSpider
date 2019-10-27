@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
     /// <summary>
     /// 单独的泛型实型

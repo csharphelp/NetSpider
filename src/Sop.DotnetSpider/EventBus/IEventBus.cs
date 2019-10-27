@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Sop.Spider.EventBus
+namespace Sop.DotnetSpider.EventBus
 {
 	/// <summary>
 	/// 消息队列接口

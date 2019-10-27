@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using HtmlAgilityPack;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Selector
 {
     /// <summary>
     /// 抽象选择器

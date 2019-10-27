@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Serilog.Sinks.SystemConsole.Themes;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 

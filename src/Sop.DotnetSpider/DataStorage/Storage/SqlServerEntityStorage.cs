@@ -1,24 +1,12 @@
 using Microsoft.Extensions.Logging;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage.Storage
 {
-	/// <summary>
-	/// 数据库版本
-	/// </summary>
-	public enum SqlServerVersion
-	{
-		V2000,
-		V2005,
-		V2008,
-		V2012,
-		V2017
-	}
-
 	/// <summary>
 	/// SqlServer 保存解析(实体)结果
 	/// </summary>

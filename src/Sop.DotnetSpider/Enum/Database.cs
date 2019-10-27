@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
     /// <summary>
     /// Database type enum

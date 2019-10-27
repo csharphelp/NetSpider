@@ -1,27 +1,20 @@
 using Dapper;
 using MySql.Data.MySqlClient;
-using Sop.Spider.Common;
-using Sop.Spider.Entity;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.Entity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// TODO： 没有充分测试 
 	/// </summary>
 	public class RedisStatisticsStore : IStatisticsStore
-
 	{
-		private readonly string Count = "Count";
-		private readonly string Down = "Download";
-
-		private readonly string LastTime = "LastTime";
-		private readonly string Time = "Time";
-
 		private readonly long _time;
 		private readonly SpiderOptions _options;
 		/// <summary>
@@ -72,7 +65,7 @@ namespace Sop.Spider.Statistics
 		{
 			//INSERT INTO sopspider.spider_statistics (owner_id, total) VALUES (@OwnerId, @Count) ON DUPLICATE key UPDATE total = total + @Count, last_modification_time = CURRENT_TIMESTAMP;
 			//记录总请求数
-			SetRedisQueue(ownerId, Count, SpiderOptions.Total, count);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Total, count);
 
 			return Task.CompletedTask;
 		}
@@ -85,8 +78,8 @@ namespace Sop.Spider.Statistics
 		{
 			//INSERT INTO sopspider.spider_statistics (owner_id) VALUES (@OwnerId) ON DUPLICATE key UPDATE success = success + 1, last_modification_time = CURRENT_TIMESTAMP;
 			//记录成功总数、成功时间、最后更新时间
-			var count = SetRedisQueue(ownerId, Count, SpiderOptions.Success);
-			SetRedisQueue(ownerId, Count, SpiderOptions.Success, count + 1);
+			var count = SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Success);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Success, count + 1);
 			return Task.CompletedTask;
 
 		}
@@ -100,8 +93,8 @@ namespace Sop.Spider.Statistics
 		{
 			//INSERT INTO sopspider.spider_statistics (owner_id) VALUES (@OwnerId) ON DUPLICATE key UPDATE failed = failed + 1, last_modification_time = CURRENT_TIMESTAMP;
 			//修改失败总数、成功时间、最后更新时间
-			SetRedisQueue(ownerId, Count, SpiderOptions.Failed, count);
-			SetRedisQueue(ownerId, Count, SpiderOptions.Failed + Time, _time);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Failed, count);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Failed + Const.RedisStatisticsTime, _time);
 			return Task.CompletedTask;
 
 		}
@@ -113,8 +106,8 @@ namespace Sop.Spider.Statistics
 		public Task StartAsync(string ownerId)
 		{
 			//INSERT INTO sopspider.spider_statistics (owner_id, start) VALUES (@OwnerId, @Start) ON DUPLICATE key UPDATE start = @Start, last_modification_time = CURRENT_TIMESTAMP;
-			SetRedisQueue(ownerId, Count, SpiderOptions.Start, 1);
-			SetRedisQueue(ownerId, Count, SpiderOptions.Start + Time, _time);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Start, 1);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Start + Const.RedisStatisticsTime, _time);
 			return Task.CompletedTask;
 
 		}
@@ -126,8 +119,8 @@ namespace Sop.Spider.Statistics
 		public Task ExitAsync(string ownerId)
 		{//INSERT INTO sopspider.spider_statistics (owner_id, `exit`) VALUES (@OwnerId, @Exit) ON DUPLICATE key UPDATE `exit` = @Exit, last_modification_time = CURRENT_TIMESTAMP;
 
-			SetRedisQueue(ownerId, Count, SpiderOptions.Exit, 1);
-			SetRedisQueue(ownerId, Count, SpiderOptions.Exit + Time, _time);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Exit, 1);
+			SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Exit + Const.RedisStatisticsTime, _time);
 			return Task.CompletedTask;
 
 		}
@@ -140,12 +133,12 @@ namespace Sop.Spider.Statistics
 		{
 
 
-			var Total = SetRedisQueue(ownerId, Count, SpiderOptions.Total);
-			var Failed = SetRedisQueue(ownerId, Count, SpiderOptions.Failed);
-			var Success = SetRedisQueue(ownerId, Count, SpiderOptions.Success);
+			var Total = SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Total);
+			var Failed = SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Failed);
+			var Success = SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Success);
 
-			var ExitTime = SetRedisQueue(ownerId, Count, SpiderOptions.Exit + Time);
-			var StartTime = SetRedisQueue(ownerId, Count, SpiderOptions.Start + Time);
+			var ExitTime = SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Exit + Const.RedisStatisticsTime);
+			var StartTime = SetRedisQueue(ownerId, Const.RedisStatisticsCount, SpiderOptions.Start + Const.RedisStatisticsTime);
 
 			var info = new SpiderStatistics()
 			{
@@ -189,8 +182,8 @@ namespace Sop.Spider.Statistics
 		/// <returns></returns>
 		public Task IncrementDownloadSuccessAsync(string agentId, int count, long elapsedMilliseconds)
 		{
-			SetRedisQueue(agentId, Down, SpiderOptions.DownloadSuccess, count);
-			SetRedisQueue(agentId, Down, SpiderOptions.DownloadSuccess + Time, elapsedMilliseconds);
+			SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadSuccess, count);
+			SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadSuccess + Const.RedisStatisticsTime, elapsedMilliseconds);
 
 			return Task.CompletedTask;
 
@@ -204,8 +197,8 @@ namespace Sop.Spider.Statistics
 		/// <returns></returns>
 		public Task IncrementDownloadFailedAsync(string agentId, int count, long elapsedMilliseconds)
 		{
-			SetRedisQueue(agentId, Down, SpiderOptions.DownloadFailed, count);
-			SetRedisQueue(agentId, Down, SpiderOptions.DownloadFailed + Time, elapsedMilliseconds);
+			SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadFailed, count);
+			SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadFailed + Const.RedisStatisticsTime, elapsedMilliseconds);
 
 			return Task.CompletedTask;
 
@@ -220,7 +213,7 @@ namespace Sop.Spider.Statistics
 		{
 			var redisQueue = new RedisQueue(_options.GetRedisOptions);
 			//队列
-			var list = redisQueue.Gets<DownloadStatistics>(Down);
+			var list = redisQueue.Gets<DownloadStatistics>(Const.RedisStatisticsDownload);
 			list = list.Skip((page - 1) * size).Take(size).ToList();
 
 			return Task.FromResult<IEnumerable<DownloadStatistics>>(list);
@@ -233,9 +226,9 @@ namespace Sop.Spider.Statistics
 		/// <returns></returns>
 		public Task<DownloadStatistics> GetDownloadStatisticsAsync(string agentId)
 		{
-			var Success = SetRedisQueue(agentId, Down, SpiderOptions.DownloadSuccess);
-			var Failed = SetRedisQueue(agentId, Down, SpiderOptions.DownloadFailed);
-			var DownloadTime = SetRedisQueue(agentId, Down, SpiderOptions.DownloadSuccess + Time) + SetRedisQueue(agentId, Down, SpiderOptions.DownloadFailed + Time);
+			var Success = SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadSuccess);
+			var Failed = SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadFailed);
+			var DownloadTime = SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadSuccess + Const.RedisStatisticsTime) + SetRedisQueue(agentId, Const.RedisStatisticsDownload, SpiderOptions.DownloadFailed + Const.RedisStatisticsTime);
 
 			var info = new DownloadStatistics()
 			{

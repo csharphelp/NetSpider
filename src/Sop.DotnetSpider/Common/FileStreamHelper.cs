@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
     public static class FileStreamHelper
     {

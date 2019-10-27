@@ -1,4 +1,4 @@
-namespace Sop.Spider.Scheduler
+namespace Sop.DotnetSpider.Scheduler
 {
 	/// <summary>
 	/// 调度的遍历策略

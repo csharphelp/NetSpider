@@ -3,9 +3,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.Spider.Download
+namespace Sop.DotnetSpider.Download
 {
 	/// <summary>
 	/// 验证代理是否正常

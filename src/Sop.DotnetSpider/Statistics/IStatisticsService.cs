@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
     /// <summary>
     /// 统计服务接口

@@ -1,7 +1,7 @@
 using System;
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Download;
 
-namespace Sop.Spider.RequestSupplier
+namespace Sop.DotnetSpider.RequestSupplier
 {
     /// <summary>
     /// 请求供应接口

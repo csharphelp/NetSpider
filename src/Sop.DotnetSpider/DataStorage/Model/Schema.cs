@@ -1,6 +1,6 @@
 using System;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 数据库架构信息
@@ -44,7 +44,7 @@ namespace Sop.Spider.DataStorage
 				{
 					if (string.IsNullOrWhiteSpace(tablePostfixFormat))
 					{
-						throw  new SpiderArgumentException("Sop.Spider.DataStorage tablePostfixFormat为空");
+						throw  new SpiderArgumentException("Sop.DotnetSpider.DataStorage tablePostfixFormat为空");
 					}
 					else
 					{
@@ -54,7 +54,7 @@ namespace Sop.Spider.DataStorage
 				}
 				catch (Exception ex)
 				{
-					throw new SpiderArgumentException("--[Sop.Spider.DataStorage ]");
+					throw new SpiderArgumentException("--[Sop.DotnetSpider.DataStorage ]");
 				}
 			}
 			

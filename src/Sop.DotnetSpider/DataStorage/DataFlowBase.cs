@@ -1,8 +1,9 @@
 using Microsoft.Extensions.Logging;
-using Sop.Spider.DataStorage;
+using Sop.DotnetSpider.DataStorage;
 using System.Threading.Tasks;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 数据流处理器基类
@@ -23,7 +24,7 @@ namespace Sop.Spider.DataStorage
 		public virtual Task InitAsync()
 		{
 #if NETFRAMEWORK
-            return Sop.Spider.Core.Framework.CompletedTask;
+            return Sop.DotnetSpider.Core.Framework.CompletedTask;
 #else
 			return Task.CompletedTask;
 #endif

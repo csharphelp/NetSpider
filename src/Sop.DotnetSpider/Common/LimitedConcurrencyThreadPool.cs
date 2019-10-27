@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	/// <summary>
 	/// 

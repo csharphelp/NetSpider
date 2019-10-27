@@ -1,13 +1,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Sop.Spider.Common;
-using Sop.Spider.DataStorage;
-using Sop.Spider.Download;
-using Sop.Spider.EventBus;
-using Sop.Spider.RequestSupplier;
-using Sop.Spider.Scheduler;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.Download;
+using Sop.DotnetSpider.EventBus;
+using Sop.DotnetSpider.RequestSupplier;
+using Sop.DotnetSpider.Scheduler;
+using Sop.DotnetSpider.Statistics;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,8 +16,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 爬虫基类
@@ -552,7 +553,11 @@ namespace Sop.Spider
 				_logger.LogInformation($"任务 {Id} 速度控制器退出");
 			});
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="message"></param>
+		/// <returns></returns>
 		private Task HandleCommandAsync(Event message)
 		{
 			switch (message.Type)
@@ -566,7 +571,11 @@ namespace Sop.Spider
 
 			return Task.CompletedTask;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="message"></param>
+		/// <returns></returns>
 		private async Task HandleMessageAsync(Event message)
 		{
 			if (string.IsNullOrWhiteSpace(message.Data))
@@ -757,6 +766,14 @@ namespace Sop.Spider
 			{
 				_logger.LogError($"任务 {Id} 处理消息 {message} 失败: {ex}");
 			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		private int GetDepth()
+		{
+			throw new NotImplementedException();
 		}
 
 		/// <summary>

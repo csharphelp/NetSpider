@@ -1,12 +1,15 @@
-using Microsoft.Extensions.Logging;
-using Sop.Spider.DataStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
+using Microsoft.Extensions.Logging;
+using Sop.DotnetSpider.Analyzer.Selector;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 实体解析器

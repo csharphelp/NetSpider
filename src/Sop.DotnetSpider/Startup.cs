@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 启动任务工具
@@ -42,7 +42,7 @@ namespace Sop.Spider
 
 				ConfigureSerialLog(logfile);
 
-				Framework.SetEncoding();
+			
 
 				Framework.SetMultiThread();
 
@@ -183,7 +183,7 @@ namespace Sop.Spider
 				.Where(f => f.EndsWith(".dll") || f.EndsWith(".exe"))
 				.Select(f => Path.GetFileName(f).Replace(".dll", "").Replace(".exe", "")).ToList();
 			return
-				files.Where(f => !f.Contains("Sop.Spider")
+				files.Where(f => !f.Contains("Sop.DotnetSpider")
 				                 && DetectAssembles.Any(n => f.ToLower().Contains(n))).ToList();
 		}
 		/// <summary>

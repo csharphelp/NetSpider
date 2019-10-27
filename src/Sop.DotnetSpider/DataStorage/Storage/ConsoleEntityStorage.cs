@@ -1,9 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using Sop.Spider.Common;
+using Sop.DotnetSpider.Common;
 using Newtonsoft.Json;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.DataStorage
+namespace Sop.DotnetSpider.DataStorage
 {
 	/// <summary>
 	/// 控制台打印(实体)解析结果

@@ -2,9 +2,11 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Sop.Spider.DataStorage;
+using Sop.DotnetSpider.Analyzer.Format;
+using Sop.DotnetSpider.Analyzer.Select;
+using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 实体模型

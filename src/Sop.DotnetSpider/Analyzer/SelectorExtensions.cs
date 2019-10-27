@@ -1,6 +1,8 @@
 using System;
+using Sop.DotnetSpider.Analyzer.Select;
+using Sop.DotnetSpider.Analyzer.Selector;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer
 {
 	/// <summary>
 	/// 选择器扩展

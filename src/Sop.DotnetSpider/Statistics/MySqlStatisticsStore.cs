@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using MySql.Data.MySqlClient;
-using Sop.Spider.Common;
-using Sop.Spider.Entity;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.Entity;
 
-namespace Sop.Spider.Statistics
+namespace Sop.DotnetSpider.Statistics
 {
 	/// <summary>
 	/// 

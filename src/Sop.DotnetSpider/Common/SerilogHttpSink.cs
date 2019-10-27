@@ -10,7 +10,7 @@ using Serilog.Debugging;
 using Serilog.Events;
 using Serilog.Sinks.PeriodicBatching;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
     public static class LoggerConfigurationHttpExtensions
     {
@@ -90,7 +90,7 @@ namespace Sop.Spider.Common
                 }
 
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, _api);
-                httpRequestMessage.Headers.Add("Sop.SpiderToken", _token);
+                httpRequestMessage.Headers.Add("Sop.DotnetSpiderToken", _token);
                 var json = JsonConvert.SerializeObject(logs);
                 httpRequestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
 

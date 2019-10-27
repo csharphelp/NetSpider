@@ -1,6 +1,7 @@
 ﻿using System;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Format
 {
 	/// <summary>
 	/// Replaces one or more format items in a specified string with the string representation of a specified object.

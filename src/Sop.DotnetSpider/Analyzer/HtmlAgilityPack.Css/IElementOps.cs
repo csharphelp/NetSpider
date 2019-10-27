@@ -1,4 +1,6 @@
-namespace Sop.Spider.Analyzer.HtmlAgilityPack.Css
+using Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css;
+
+namespace Sop.DotnetSpider.Analyzer.HtmlAgilityPack.Css
 {
     /// <summary>
     /// Represents a selectors implementation for an arbitrary document/node system.

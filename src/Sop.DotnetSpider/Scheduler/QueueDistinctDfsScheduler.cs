@@ -1,9 +1,9 @@
-using Sop.Spider.Download;
+using Sop.DotnetSpider.Download;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace Sop.Spider.Scheduler
+namespace Sop.DotnetSpider.Scheduler
 {
 	/// <summary>
 	/// 基于内存的深度优先调度(去重 URL)

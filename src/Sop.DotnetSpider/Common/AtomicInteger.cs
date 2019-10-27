@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
     /// <summary>
     /// 线程安全的计数器

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 
 

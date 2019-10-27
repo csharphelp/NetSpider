@@ -1,17 +1,18 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Sop.Spider.Common;
-using Sop.Spider.DownloadAgent;
-using Sop.Spider.DownloadAgentRegisterCenter;
-using Sop.Spider.DownloadAgentRegisterCenter.Internal;
-using Sop.Spider.EventBus;
-using Sop.Spider.Network.InternetDetector;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DownloadAgent;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter;
+using Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal;
+using Sop.DotnetSpider.EventBus;
+using Sop.DotnetSpider.Network.InternetDetector;
+using Sop.DotnetSpider.Statistics;
 using System;
+using Sop.DotnetSpider.Network;
 
 
-namespace Sop.Spider
+namespace Sop.DotnetSpider
 {
 	/// <summary>
 	/// 注入事件扩展
@@ -197,7 +198,7 @@ namespace Sop.Spider
 
 		#endregion
 
-		#region Sop.Spider
+		#region Sop.DotnetSpider
 
 		public static IServiceCollection AddSpider(this IServiceCollection services)
 		{

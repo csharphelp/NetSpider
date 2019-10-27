@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
+using Sop.DotnetSpider;
 
-namespace Sop.Spider.Analyzer
+namespace Sop.DotnetSpider.Analyzer.Select
 {
 	/// <summary>
 	/// 选择器特性

@@ -1,4 +1,4 @@
-namespace Sop.Spider.Common
+namespace Sop.DotnetSpider.Common
 {
 	public interface IRunnable
 	{
