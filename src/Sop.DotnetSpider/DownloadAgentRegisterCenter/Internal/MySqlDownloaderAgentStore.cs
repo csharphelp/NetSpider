@@ -31,17 +31,17 @@ namespace Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal
 			}
 		}
 
-		public async Task<IEnumerable<Entity.DownloadAgent>> GetAllListAsync()
+		public async Task<IEnumerable<DotnetSpider.Entity.DownloadAgent>> GetAllListAsync()
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{
-				return (await conn.QueryAsync<Entity.DownloadAgent>(
+				return (await conn.QueryAsync<DotnetSpider.Entity.DownloadAgent>(
 						$"SELECT * FROM SopSpider.downloader_agent"))
 					.ToList();
 			}
 		}
 
-		public async Task RegisterAsync(Entity.DownloadAgent agent)
+		public async Task RegisterAsync(DotnetSpider.Entity.DownloadAgent agent)
 		{
 			using (var conn = new MySqlConnection(_options.ConnectionString))
 			{

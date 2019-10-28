@@ -4,6 +4,7 @@ using Sop.DotnetSpider.Common;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Sop.DotnetSpider.DataStorage.Storage;
 
 namespace Sop.DotnetSpider.DataStorage
 {

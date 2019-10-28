@@ -1,9 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Sop.DotnetSpider.DataStorage;
 
-namespace Sop.DotnetSpider.DataStorage
+namespace Sop.DotnetSpider.DataStorage.Storage
 {
 	/// <summary>
 	/// 实体存储器

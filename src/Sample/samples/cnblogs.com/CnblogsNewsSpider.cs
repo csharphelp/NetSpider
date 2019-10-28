@@ -1,21 +1,19 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Sop.Spider;
-using Sop.Spider.Analyzer;
-using Sop.Spider.Common;
-using Sop.Spider.DataStorage;
-using Sop.Spider.Download;
-using Sop.Spider.EventBus;
-using Sop.Spider.Scheduler;
-using Sop.Spider.Statistics;
+using Sop.DotnetSpider;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.Analyzer.Format;
+using Sop.DotnetSpider.Analyzer.Select;
+using Sop.DotnetSpider.Common;
+using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.Download;
+using Sop.DotnetSpider.EventBus;
+using Sop.DotnetSpider.Statistics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using Sop.DotnetSpider.Analyzer;
-using Sop.DotnetSpider.Analyzer.Format;
-using Sop.DotnetSpider.Analyzer.Select;
 
 namespace Sample.samples
 {

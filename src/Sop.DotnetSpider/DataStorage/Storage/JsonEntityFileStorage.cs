@@ -3,6 +3,7 @@ using Sop.DotnetSpider.Common;
 using System.IO;
 using System.Threading.Tasks;
 using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.DataStorage.Storage;
 
 namespace Sop.DotnetSpider.DataStorage
 {

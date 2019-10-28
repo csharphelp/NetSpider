@@ -71,7 +71,7 @@ namespace Sop.DotnetSpider.DownloadAgent
 			await _eventBus.PublishAsync(_spiderOptions.DownloadedAgentRegisterCenterTopic, new Event
 			{
 				Type = Framework.RegisterCommand,
-				Data = JsonConvert.SerializeObject(new DownloadAgentRegisterCenter.Entity.DownloadAgent
+				Data = JsonConvert.SerializeObject(new Entity.DownloadAgent
 				{
 					Id = _options.AgentId,
 					Name = _options.Name,

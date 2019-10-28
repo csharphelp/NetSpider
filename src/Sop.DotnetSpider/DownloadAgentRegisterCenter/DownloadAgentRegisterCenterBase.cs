@@ -92,7 +92,7 @@ namespace Sop.DotnetSpider.DownloadAgentRegisterCenter
 					case Framework.RegisterCommand:
 						{
 							// 此处不考虑消息的超时，一是因为节点数量不会很多，二是因为超时的可以释放掉
-							var agent = JsonConvert.DeserializeObject<Entity.DownloadAgent>(message.Data);
+							var agent = JsonConvert.DeserializeObject<DotnetSpider.Entity.DownloadAgent>(message.Data);
 							if (agent != null)
 							{
 								//添加异步代理下载器

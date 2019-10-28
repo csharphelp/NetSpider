@@ -11,20 +11,20 @@ namespace Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal
 	/// </summary>
 	internal class LocalDownloadAgentStore : IDownloadAgentStore
 	{
-		private readonly ConcurrentDictionary<string, Entity.DownloadAgent> _agents =
-			new ConcurrentDictionary<string, Entity.DownloadAgent>();
+		private readonly ConcurrentDictionary<string, DotnetSpider.Entity.DownloadAgent> _agents =
+			new ConcurrentDictionary<string, DotnetSpider.Entity.DownloadAgent>();
 
 		public Task EnsureDatabaseAndTableCreatedAsync()
 		{
 			return Task.CompletedTask;
 		}
 
-		public Task<IEnumerable<Entity.DownloadAgent>> GetAllListAsync()
+		public Task<IEnumerable<DotnetSpider.Entity.DownloadAgent>> GetAllListAsync()
 		{
-			return Task.FromResult((IEnumerable<Entity.DownloadAgent>)_agents.Values);
+			return Task.FromResult((IEnumerable<DotnetSpider.Entity.DownloadAgent>)_agents.Values);
 		}
 
-		public Task RegisterAsync(Entity.DownloadAgent agent)
+		public Task RegisterAsync(DotnetSpider.Entity.DownloadAgent agent)
 		{
 			_agents.AddOrUpdate(agent.Id, x => agent, (s, a) =>
 			{

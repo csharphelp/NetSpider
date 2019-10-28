@@ -1,10 +1,9 @@
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.Analyzer.Selector;
+using Sop.DotnetSpider.Download;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using Sop.DotnetSpider.Analyzer.Selector;
-using Sop.DotnetSpider;
-using Sop.DotnetSpider.Analyzer;
-using Sop.DotnetSpider.Download;
 
 namespace Sop.DotnetSpider.DataStorage
 {

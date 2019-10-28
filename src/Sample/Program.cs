@@ -25,14 +25,14 @@ namespace Sample
 			 
 
 			////案例1实体采集
-			await CnblogsNewsSpider.Run();
+			//await CnblogsNewsSpider.Run();
 
 			//微信搜狗采集（验证支持）
 			//await WeiXinSoGouSpider.Run();
 
 
-			//头条实时新闻采集（JSON）
-			//await RealtTimeNewsJsonSpider.Run();
+			//头条实时新闻采集（JSON） redis 计数统计
+			await RealtTimeNewsJsonSpider.Run();
 
 			//await BaseUsage.Run();
 			Console.Read();

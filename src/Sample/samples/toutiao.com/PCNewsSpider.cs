@@ -18,26 +18,13 @@ using System.Threading.Tasks;
 namespace Sample.samples
 {
 	/// <summary>
-	/// 24小时热闻 采集
-	/// 1、https://www.toutiao.com/api/pc/realtime_news/
+	/// 实体信息采集器
+	/// 1、https://www.toutiao.com/
 	/// 2、参考jsonPath https://blog.csdn.net/fwk19840301/article/details/80452258
 	/// 
 	/// </summary>
-	public class RealtTimeNewsJsonSpider : Spider
-	{
-		/// <summary>
-		/// 构造函数
-		/// </summary>
-		/// <param name="mq"></param>
-		/// <param name="statisticsService"></param>
-		/// <param name="options"></param>
-		/// <param name="logger"></param>
-		/// <param name="services"></param>
-		public RealtTimeNewsJsonSpider(IEventBus mq, IStatisticsService statisticsService, SpiderOptions options,
-		ILogger<Spider> logger, IServiceProvider services) : base(mq, statisticsService, options, logger, services)
-		{
-			 
-		}
+	public class PCNewsSpider : Spider
+	{ 
 		/// <summary>
 		/// 运行爬虫
 		/// </summary>
@@ -56,10 +43,10 @@ namespace Sample.samples
 						x.UseFileLocker();
 						x.UseDefaultInternetDetector();
 					});
-					services.AddStatisticsCenter(x => x.UseMemory());
-				}).Register<RealtTimeNewsJsonSpider>();
+					services.AddStatisticsCenter(x => x.UseRedis());
+				}).Register<PCNewsSpider>();
 			var provider = builder.Build();
-			var spider = provider.Create<RealtTimeNewsJsonSpider>();
+			var spider = provider.Create<PCNewsSpider>();
 			return spider.RunAsync();
 		}
 		protected override void Initialize()
@@ -67,11 +54,11 @@ namespace Sample.samples
 
 			AddDataFlow(new DataParser<RealtTimeNewsJsonEntry>())
 				.AddDataFlow(new MySqlEntityStorage(StorageType.InsertIgnoreDuplicate, SpiderOptions.ConnectionString1));
-			
+
 			AddRequests(
-				new Request("https://www.toutiao.com/api/pc/realtime_news/", 
-					new Dictionary<string, string> { { "网站key", "网站value " } })
+				new Request("https://www.toutiao.com/", new Dictionary<string, string> { { "网站key", "网站value " } })
 				 );
+		
 		}
 		/*
 		 参考jsonPath https://blog.csdn.net/fwk19840301/article/details/80452258

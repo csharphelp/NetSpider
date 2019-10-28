@@ -1,14 +1,13 @@
-using MySql.Data.MySqlClient;
-using Sop.DotnetSpider.Analyzer;
-using Sop.DotnetSpider.Common;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sop.DotnetSpider.DataStorage;
+using MySql.Data.MySqlClient;
+using Sop.DotnetSpider.Analyzer;
+using Sop.DotnetSpider.Common;
 
-namespace Sop.DotnetSpider.DataStorage
+namespace Sop.DotnetSpider.DataStorage.Storage
 {
 	/// <summary>
 	/// 文件类型

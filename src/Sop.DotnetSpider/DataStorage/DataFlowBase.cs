@@ -1,7 +1,5 @@
 using Microsoft.Extensions.Logging;
-using Sop.DotnetSpider.DataStorage;
 using System.Threading.Tasks;
-using Sop.DotnetSpider.DataStorage;
 
 namespace Sop.DotnetSpider.DataStorage
 {

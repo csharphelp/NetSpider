@@ -3,6 +3,8 @@ using Serilog;
 using Sop.DotnetSpider;
 using Sop.DotnetSpider.Analyzer;
 using Sop.DotnetSpider.DataStorage;
+using Sop.DotnetSpider.DataStorage.Storage;
+using Sop.DotnetSpider.Download;
 using Sop.DotnetSpider.EventBus;
 using System;
 using System.Collections.Generic;
@@ -43,7 +45,7 @@ namespace Sample.samples
 
 			Console.Read();
 			
-			var spider = provider.Create<Sop.Spider.Spider>();
+			var spider = provider.Create<Spider>();
 			spider.Name = "博客园全站采集"; // 设置任务名称
 			spider.Speed = 10; // 设置采集速度, 表示每秒下载多少个请求, 大于 1 时越大速度越快, 小于 1 时越小越慢, 不能为0.
 			spider.SetDepth(3); // 设置采集深度

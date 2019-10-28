@@ -42,11 +42,19 @@ namespace Sop.DotnetSpider
 		/// 速度控制器间隔
 		/// </summary>
 		private int _speedControllerInterval = 1000;
+
+		public void SetDepth(int v)
+		{
+			throw new NotImplementedException();
+		}
+
 		private int _dequeueBatchCount = 1;
 		private int _depth = int.MaxValue;
 		private string _id;
 		private bool _retryWhenResultIsEmpty;
 		private bool _mmfSignal;
+
+	
 		#endregion
 
 

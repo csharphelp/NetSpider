@@ -3848,53 +3848,53 @@
             表名的后缀为自定义设置要求必须
             </summary>
         </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.ConsoleEntityStorage">
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.ConsoleEntityStorage">
             <summary>
             控制台打印(实体)解析结果
             </summary>
         </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.ConsoleEntityStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.ConsoleEntityStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
             <summary>
             根据配置返回存储器
             </summary>
             <param name="options"></param>
             <returns></returns>
         </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.ConsoleStorage">
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.ConsoleStorage">
             <summary>
             控制台打印解析结果(所有解析结果)
             </summary>
         </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.ConsoleStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.ConsoleStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
             <summary>
             根据配置返回存储器
             </summary>
             <param name="options">配置</param>
             <returns></returns>
         </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.EntityFileStorageBase">
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.EntityFileStorageBase">
             <summary>
             实体解析结果的文件存储器
             </summary>
         </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.EntityFileStorageBase.Folder">
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.EntityFileStorageBase.Folder">
             <summary>
             存储的根文件夹
             </summary>
         </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.EntityFileStorageBase.#ctor">
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.EntityFileStorageBase.#ctor">
             <summary>
             构造方法
             </summary>
         </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.EntityFileStorageBase.GetDataFolder(System.String)">
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.EntityFileStorageBase.GetDataFolder(System.String)">
             <summary>
             获取存储文件夹
             </summary>
             <param name="ownerId">任务标识</param>
             <returns></returns>
         </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.EntityFileStorageBase.GetDataFile(Sop.DotnetSpider.DataStorage.DataFlowContext,Sop.DotnetSpider.DataStorage.TableMetadata,System.String)">
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.EntityFileStorageBase.GetDataFile(Sop.DotnetSpider.DataStorage.DataFlowContext,Sop.DotnetSpider.DataStorage.TableMetadata,System.String)">
             <summary>
             获取数据文件路径
             </summary>
@@ -3903,23 +3903,241 @@
             <param name="extension">文件扩展名</param>
             <returns></returns>
         </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.EntityStorageBase">
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.EntityStorageBase">
             <summary>
             实体存储器
             </summary>
         </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.FileStorage">
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.FileStorage">
             <summary>
             文件保存解析结果(所有解析结果)
             保存路径: [当前程序运行目录]/files/[任务标识]/[request.hash].data
             </summary>
         </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.FileStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.FileStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
             <summary>
             根据配置返回存储器
             </summary>
             <param name="options">配置</param>
             <returns></returns>
+        </member>
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.MySqlFileType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.MySqlFileType.LoadFile">
+            <summary>
+            LOAD
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.MySqlFileType.InsertSql">
+            <summary>
+            INSERT SQL语句
+            </summary>
+        </member>
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.MySqlFileEntityStorage">
+            <summary>
+            把解析到的爬虫实体数据存成 SQL 文件, 支持两种模式
+            LoadFile 是批量导入模式通过命令 LOAD DATA LOCAL INFILE '{filePath}' INTO TABLE `{schema}`.`{dababase}` FIELDS TERMINATED BY '$'  ENCLOSED BY '#' LINES TERMINATED BY '@END@' IGNORE 1 LINES; 还原。
+            InsertSql 是完整的 Insert SQL 语句, 需要一条条执行来导入数据
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.MySqlFileEntityStorage.IgnoreCase">
+            <summary>
+            数据库忽略大小写
+            </summary>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.MySqlFileEntityStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
+            <summary>
+            根据配置返回存储器
+            </summary>
+            <param name="options">配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.MySqlFileEntityStorage.#ctor(Sop.DotnetSpider.DataStorage.Storage.MySqlFileType)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="fileType">文件类型</param>
+        </member>
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase">
+            <summary>
+            关系型数据库保存实体解析结果
+            </summary>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.CreateDbConnection(System.String)">
+            <summary>
+            创建数据库连接接口
+            </summary>
+            <param name="connectString">连接字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.GenerateSqlStatements(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.EnsureDatabaseAndTableCreated(System.Data.IDbConnection,Sop.DotnetSpider.DataStorage.SqlStatements)">
+            <summary>
+            创建数据库和表
+            </summary>
+            <param name="conn">数据库连接</param>
+            <param name="sqlStatements">SQL 语句</param>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.#ctor(Sop.DotnetSpider.DataStorage.StorageType,System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="storageType">存储器类型</param>
+            <param name="connectionString">连接字符串</param>
+        </member>
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.StorageType">
+            <summary>
+            存储器类型
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.RetryTimes">
+            <summary>
+            数据库操作重试次数
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.ConnectionString">
+            <summary>
+            连接字符串
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.UseTransaction">
+            <summary>
+            是否使用事务操作。默认不使用。
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.DataStorage.Storage.RelationalDatabaseEntityStorageBase.IgnoreCase">
+            <summary>
+            数据库忽略大小写
+            </summary>
+        </member>
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage">
+            <summary>
+            SqlServer 保存解析(实体)结果
+            </summary>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
+            <summary>
+            根据配置返回存储器
+            </summary>
+            <param name="options">配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.#ctor(Sop.DotnetSpider.DataStorage.StorageType,System.String,Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="storageType">存储器类型</param>
+            <param name="connectionString">连接字符串</param>
+            <param name="version">数据库版本</param>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.CreateDbConnection(System.String)">
+            <summary>
+            创建数据库连接接口
+            </summary>
+            <param name="connectString">连接字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateSqlStatements(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateCreateDatabaseSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成创建数据库的 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateCreateTableSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成创建表的 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateInsertSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成插入数据的 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateUpdateSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成更新数据的 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateInsertAndUpdateSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成插入新数据或者更新旧数据的 SQL 语句
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateTableSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
+            <summary>
+            生成数据库名称的 SQL
+            </summary>
+            <param name="tableMetadata">表元数据</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateColumnSql(Sop.DotnetSpider.DataStorage.Column,System.Boolean)">
+            <summary>
+            生成列的 SQL
+            </summary>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateDataTypeSql(System.String,System.Int32)">
+            <summary>
+            生成数据类型的 SQL
+            </summary>
+            <param name="type">数据类型</param>
+            <param name="length">数据长度</param>
+            <returns>SQL 语句</returns>
+        </member>
+        <member name="T:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion">
+            <summary>
+            数据库版本
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2000">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2005">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2008">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2012">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2017">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Sop.DotnetSpider.DataStorage.FileStorageBase">
             <summary>
@@ -4069,224 +4287,6 @@
             <param name="type">数据类型</param>
             <param name="length">数据长度</param>
             <returns>SQL 语句</returns>
-        </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.MySqlFileType">
-            <summary>
-            文件类型
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.MySqlFileType.LoadFile">
-            <summary>
-            LOAD
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.MySqlFileType.InsertSql">
-            <summary>
-            INSERT SQL语句
-            </summary>
-        </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.MySqlFileEntityStorage">
-            <summary>
-            把解析到的爬虫实体数据存成 SQL 文件, 支持两种模式
-            LoadFile 是批量导入模式通过命令 LOAD DATA LOCAL INFILE '{filePath}' INTO TABLE `{schema}`.`{dababase}` FIELDS TERMINATED BY '$'  ENCLOSED BY '#' LINES TERMINATED BY '@END@' IGNORE 1 LINES; 还原。
-            InsertSql 是完整的 Insert SQL 语句, 需要一条条执行来导入数据
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.MySqlFileEntityStorage.IgnoreCase">
-            <summary>
-            数据库忽略大小写
-            </summary>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.MySqlFileEntityStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
-            <summary>
-            根据配置返回存储器
-            </summary>
-            <param name="options">配置</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.MySqlFileEntityStorage.#ctor(Sop.DotnetSpider.DataStorage.MySqlFileType)">
-            <summary>
-            构造方法
-            </summary>
-            <param name="fileType">文件类型</param>
-        </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase">
-            <summary>
-            关系型数据库保存实体解析结果
-            </summary>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.CreateDbConnection(System.String)">
-            <summary>
-            创建数据库连接接口
-            </summary>
-            <param name="connectString">连接字符串</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.GenerateSqlStatements(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.EnsureDatabaseAndTableCreated(System.Data.IDbConnection,Sop.DotnetSpider.DataStorage.SqlStatements)">
-            <summary>
-            创建数据库和表
-            </summary>
-            <param name="conn">数据库连接</param>
-            <param name="sqlStatements">SQL 语句</param>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.#ctor(Sop.DotnetSpider.DataStorage.StorageType,System.String)">
-            <summary>
-            构造方法
-            </summary>
-            <param name="storageType">存储器类型</param>
-            <param name="connectionString">连接字符串</param>
-        </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.StorageType">
-            <summary>
-            存储器类型
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.RetryTimes">
-            <summary>
-            数据库操作重试次数
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.ConnectionString">
-            <summary>
-            连接字符串
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.UseTransaction">
-            <summary>
-            是否使用事务操作。默认不使用。
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DataStorage.RelationalDatabaseEntityStorageBase.IgnoreCase">
-            <summary>
-            数据库忽略大小写
-            </summary>
-        </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage">
-            <summary>
-            SqlServer 保存解析(实体)结果
-            </summary>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.CreateFromOptions(Sop.DotnetSpider.Common.SpiderOptions)">
-            <summary>
-            根据配置返回存储器
-            </summary>
-            <param name="options">配置</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.#ctor(Sop.DotnetSpider.DataStorage.StorageType,System.String,Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion)">
-            <summary>
-            构造方法
-            </summary>
-            <param name="storageType">存储器类型</param>
-            <param name="connectionString">连接字符串</param>
-            <param name="version">数据库版本</param>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.CreateDbConnection(System.String)">
-            <summary>
-            创建数据库连接接口
-            </summary>
-            <param name="connectString">连接字符串</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateSqlStatements(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateCreateDatabaseSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成创建数据库的 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateCreateTableSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成创建表的 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateInsertSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成插入数据的 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateUpdateSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成更新数据的 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateInsertAndUpdateSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成插入新数据或者更新旧数据的 SQL 语句
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateTableSql(Sop.DotnetSpider.DataStorage.TableMetadata)">
-            <summary>
-            生成数据库名称的 SQL
-            </summary>
-            <param name="tableMetadata">表元数据</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateColumnSql(Sop.DotnetSpider.DataStorage.Column,System.Boolean)">
-            <summary>
-            生成列的 SQL
-            </summary>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DataStorage.Storage.SqlServerEntityStorage.GenerateDataTypeSql(System.String,System.Int32)">
-            <summary>
-            生成数据类型的 SQL
-            </summary>
-            <param name="type">数据类型</param>
-            <param name="length">数据长度</param>
-            <returns>SQL 语句</returns>
-        </member>
-        <member name="T:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion">
-            <summary>
-            数据库版本
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2000">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2005">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2008">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2012">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Sop.DotnetSpider.DataStorage.Storage.SqlServerVersion.V2017">
-            <summary>
-            
-            </summary>
         </member>
         <member name="T:Sop.DotnetSpider.DataStorage.SqlStatements">
             <summary>
@@ -4457,50 +4457,53 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent">
+        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentRegisterCenter">
             <summary>
-            下载器代理
+            下载中心
             </summary>
         </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.Id">
+        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore">
             <summary>
-            标识
+            下载器代理存储接口
             </summary>
         </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.Name">
+        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.EnsureDatabaseAndTableCreatedAsync">
             <summary>
-            名称
+            创建数据库和表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.GetAllListAsync">
+            <summary>
+            查询所有已经注册的下载器代理
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.RegisterAsync(Sop.DotnetSpider.Entity.DownloadAgent)">
+            <summary>
+            添加下载器代理
+            </summary>
+            <param name="agent">下载器代理</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.HeartbeatAsync(Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgentHeartbeat)">
+            <summary>
+            保存下载器代理的心跳
+            </summary>
+            <param name="heartbeat">下载器代理心跳</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal.LocalDownloadAgentStore">
+            <summary>
+            本地下载器代理存储
             </summary>
         </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.ProcessorCount">
+        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal.LocalDownloadAgentStore.HeartbeatAsync(Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgentHeartbeat)">
             <summary>
-            CPU 核心数
+            本地代理不需要留存心跳
             </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.TotalMemory">
-            <summary>
-            总内存
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.LastModificationTime">
-            <summary>
-            上一次更新时间
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.IsDeleted">
-            <summary>
-            是否已经标记删除
-            </summary>
-        </member>
-        <member name="P:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.CreationTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent.RefreshLastModificationTime">
-            <summary>
-            刷新上一次更新时间
-            </summary>
+            <param name="heartbeat"></param>
+            <returns></returns>
         </member>
         <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgentHeartbeat">
             <summary>
@@ -4531,54 +4534,6 @@
             <summary>
             上报时间
             </summary>
-        </member>
-        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentRegisterCenter">
-            <summary>
-            下载中心
-            </summary>
-        </member>
-        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore">
-            <summary>
-            下载器代理存储接口
-            </summary>
-        </member>
-        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.EnsureDatabaseAndTableCreatedAsync">
-            <summary>
-            创建数据库和表
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.GetAllListAsync">
-            <summary>
-            查询所有已经注册的下载器代理
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.RegisterAsync(Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgent)">
-            <summary>
-            添加下载器代理
-            </summary>
-            <param name="agent">下载器代理</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.IDownloadAgentStore.HeartbeatAsync(Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgentHeartbeat)">
-            <summary>
-            保存下载器代理的心跳
-            </summary>
-            <param name="heartbeat">下载器代理心跳</param>
-            <returns></returns>
-        </member>
-        <member name="T:Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal.LocalDownloadAgentStore">
-            <summary>
-            本地下载器代理存储
-            </summary>
-        </member>
-        <member name="M:Sop.DotnetSpider.DownloadAgentRegisterCenter.Internal.LocalDownloadAgentStore.HeartbeatAsync(Sop.DotnetSpider.DownloadAgentRegisterCenter.Entity.DownloadAgentHeartbeat)">
-            <summary>
-            本地代理不需要留存心跳
-            </summary>
-            <param name="heartbeat"></param>
-            <returns></returns>
         </member>
         <member name="T:Sop.DotnetSpider.DownloadAgent.DefaultDownloadAgent">
             <summary>
@@ -5545,6 +5500,51 @@
             <param name="hash">分组的哈希 Hashcode to identify different group.</param>
             <param name="proxy">代理</param>
             <returns>HttpClientItem</returns>
+        </member>
+        <member name="T:Sop.DotnetSpider.Entity.DownloadAgent">
+            <summary>
+            下载器代理
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.Id">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.ProcessorCount">
+            <summary>
+            CPU 核心数
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.TotalMemory">
+            <summary>
+            总内存
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.LastModificationTime">
+            <summary>
+            上一次更新时间
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.IsDeleted">
+            <summary>
+            是否已经标记删除
+            </summary>
+        </member>
+        <member name="P:Sop.DotnetSpider.Entity.DownloadAgent.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="M:Sop.DotnetSpider.Entity.DownloadAgent.RefreshLastModificationTime">
+            <summary>
+            刷新上一次更新时间
+            </summary>
         </member>
         <member name="T:Sop.DotnetSpider.Entity.DownloadStatistics">
             <summary>

@@ -72,7 +72,7 @@ namespace Sop.DotnetSpider
 			return this;
 		}
 		/// <summary>
-		/// 
+		/// 注册服务
 		/// </summary>
 		/// <typeparam name="TSpider"></typeparam>
 		/// <returns></returns>
